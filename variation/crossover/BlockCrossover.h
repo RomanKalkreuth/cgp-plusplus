@@ -1,9 +1,16 @@
-/*
- * BlockRecombination.h
- *
- *  Created on: 03.02.2023
- *      Author: roman
- */
+// 					CGP++: Modern C++ Implementation of CGP
+// ===============================================================================
+//	File
+// ===============================================================================
+//
+// ===============================================================================
+//  Copyright (C) 2024
+//
+//  Author(s): Anonymous
+//
+//	License:
+// -===============================================================================
+
 
 #ifndef VARIATION_CROSSOVER_BLOCKCROSSOVER_H_
 #define VARIATION_CROSSOVER_BLOCKCROSSOVER_H_

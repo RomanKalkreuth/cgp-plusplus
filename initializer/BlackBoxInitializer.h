@@ -1,9 +1,15 @@
-/*
- * BlackBoxInititalizer.h
- *
- *  Created on: Jan 16, 2024
- *      Author: kalkreuth
- */
+// 					CGP++: Modern C++ Implementation of CGP
+// ===============================================================================
+//	File
+// ===============================================================================
+//
+// ===============================================================================
+//  Copyright (C) 2024
+//
+//  Author(s): Anonymous
+//
+//	License:
+// -===============================================================================
 
 #ifndef INITIALIZER_BLACKBOXINITIALIZER_H_
 #define INITIALIZER_BLACKBOXINITIALIZER_H_

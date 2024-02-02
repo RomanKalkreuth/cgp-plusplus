@@ -1,9 +1,16 @@
-/*
- * MathematicalFunctions.h
- *
- *  Created on: Jan 11, 2024
- *      Author: kalkreuth
- */
+// 					CGP++: Modern C++ Implementation of CGP
+// ===============================================================================
+//	File
+// ===============================================================================
+//
+// ===============================================================================
+//  Copyright (C) 2024
+//
+//  Author(s): Anonymous
+//
+//	License:
+// -===============================================================================
+
 
 #ifndef FUNCTIONS_MATHEMATICALFUNCTIONS_H_
 #define FUNCTIONS_MATHEMATICALFUNCTIONS_H_

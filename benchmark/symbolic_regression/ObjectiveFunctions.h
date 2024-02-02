@@ -1,9 +1,15 @@
-/*
- * BenchmarkFunctions.h
- *
- *  Created on: Jan 11, 2024
- *      Author: kalkreuth
- */
+// 					CGP++: Modern C++ Implementation of CGP
+// ===============================================================================
+//	File
+// ===============================================================================
+//
+// ===============================================================================
+//  Copyright (C) 2023
+//
+//  Author(s):
+//
+//	License:
+// -===============================================================================
 
 #ifndef BENCHMARK_SYMBOLIC_REGRESSION_OBJECTIVEFUNCTIONS_H_
 #define BENCHMARK_SYMBOLIC_REGRESSION_OBJECTIVEFUNCTIONS_H_

@@ -1,9 +1,16 @@
-/*
- * DiscretePhenotypicRecombination.h
- *
- *  Created on: 24.01.2023
- *      Author: roman
- */
+// 					CGP++: Modern C++ Implementation of CGP
+// ===============================================================================
+//	File
+// ===============================================================================
+//
+// ===============================================================================
+//  Copyright (C) 2024
+//
+//  Author(s): Anonymous
+//
+//	License:
+// -===============================================================================
+
 
 #ifndef VARIATION_CROSSOVER_DISCRETECROSSOVER_H_
 #define VARIATION_CROSSOVER_DISCRETECROSSOVER_H_

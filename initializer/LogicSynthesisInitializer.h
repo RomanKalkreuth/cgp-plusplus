@@ -1,9 +1,15 @@
-/*
- * BooleanFunctionInitializer.h
- *
- *  Created on: 13.01.2023
- *      Author: roman
- */
+// 					CGP++: Modern C++ Implementation of CGP
+// ===============================================================================
+//	File
+// ===============================================================================
+//
+// ===============================================================================
+//  Copyright (C) 2024
+//
+//  Author(s): Anonymous
+//
+//	License:
+// -===============================================================================
 
 #ifndef INITIALIZER_LOGICSYNTHESISINITIALIZER_H_
 #define INITIALIZER_LOGICSYNTHESISINITIALIZER_H_
