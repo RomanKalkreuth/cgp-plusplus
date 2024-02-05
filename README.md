@@ -20,6 +20,7 @@ CGP++ also provides a suitable framework that can be used to integrate new sophi
 ### Requirements
 
 Since CGP++ uses modern techniques of C++, it has to be compiled with a version of GCC that supports the C++17 standard. 
+> g++17
 
 ### Getting Started
 
