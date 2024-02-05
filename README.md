@@ -9,7 +9,8 @@ CGP++ also provides a suitable framework that can be used to integrate new sophi
 ### Key Feaures and Properties
 
 - Generic design
-- Checkpointing 
+- Checkpointing
+- Concurrency support
 - Mutation piplining
 - Crossover support
 - Parameter interfaces for hyperparameter tuning 
