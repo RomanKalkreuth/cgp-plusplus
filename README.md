@@ -28,4 +28,29 @@ Since CGP++ uses modern techniques of C++, it has to be compiled with a version 
 We recommend compiling CGP++ using the G++ compiler with the following command: 
 > g++ -std=c++17 -O3
 
+### Basic Usage 
+The compiled file can be used with the parameter file in the data/parfile folder and the 
+following command line options 
+
+> DATAFILE PARFILE <options>
+> -a <value>          algorithm
+> -n <value>          number of function nodes
+> -v <value>          number of variables
+> -z <value>          number of constants
+> -i <value>          number of inputs
+> -o <value>          number of outputs
+> -f <value>          number of functions
+> -r <value>          maximum arity
+> -p <value>          mutation rate
+> -m <value>          number of parents (mu)
+> -l <value>          number of offspring (lambda)
+> -e <value>          maximal number of fitness evaluations
+> -g <value>          goal (ideal) fitness
+> -j <value>          number of jobs
+> -s <value>          global seed
+> -1 <value>          duplication rate
+> -2 <value>          max duplication depth
+> -3 <value>          inversion rate
+> -4 <value>          max inversion depth
+
 
