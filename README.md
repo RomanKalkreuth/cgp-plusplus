@@ -33,10 +33,11 @@ We recommend compiling CGP++ using the G++ compiler with the following command:
 The compiled file can be used with the parameter file in the data/parfile folder and the 
 following command line options.
 
+- Commandline parametrization:
 ```
 DATAFILE PARFILE options
 
- -a  - search algorithm: 0 - one-plus-lambda; 1 = mu-plus-lambda <br />
+ -a  - search algorithm: 0 = one-plus-lambda; 1 = mu-plus-lambda <br />
  -n  - number of function nodes  <br />
  -v  - number of variables  <br />
  -z  - number of constants  <br />
