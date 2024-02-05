@@ -1,4 +1,4 @@
-## CGP++: Modern C++ Implementation of CGP
+## CGP++: Modern C++ Implementation of Cartesian Genetic Programming
 
 ### Key Feaures and Properties
 
