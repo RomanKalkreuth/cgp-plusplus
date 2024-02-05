@@ -33,71 +33,71 @@ We recommend compiling CGP++ using the G++ compiler with the following command:
 The compiled file can be used with the parameter file in the data/parfile folder and the 
 following command line options.
 
-- Commandline parametrization:
+- Commandline configuration:
 ```
 DATAFILE PARFILE options
 
- -a  - search algorithm: 0 = one-plus-lambda; 1 = mu-plus-lambda <br />
- -n  - number of function nodes  <br />
- -v  - number of variables  <br />
- -z  - number of constants  <br />
- -i  - number of inputs  <br />
- -o  - number of outputs  <br />
- -f  - number of functions  <br />
- -r  - maximum arity  <br />
- -p  - mutation rate  <br />
- -m  - number of parents (mu)  <br />
- -l  - number of offspring (lambda)  <br />
- -e  - maximal number of fitness evaluations  <br />
- -g  - goal (ideal) fitness  <br />
- -j  - number of jobs  <br />
- -s  - global seed  <br />
- -1  - duplication rate  <br />
- -2  - max duplication depth  <br />
- -3  - inversion rate  <br />
- -4  - max inversion depth <br />
+ -a  - search algorithm: 0 = one-plus-lambda; 1 = mu-plus-lambda 
+ -n  - number of function nodes  
+ -v  - number of variables  
+ -z  - number of constants 
+ -i  - number of inputs  
+ -o  - number of outputs 
+ -f  - number of functions 
+ -r  - maximum arity
+ -p  - mutation rate 
+ -m  - number of parents (mu) 
+ -l  - number of offspring (lambda) 
+ -e  - maximal number of fitness evaluations
+ -g  - goal (ideal) fitness 
+ -j  - number of jobs
+ -s  - global seed
+ -1  - duplication rate 
+ -2  - max duplication depth 
+ -3  - inversion rate 
+ -4  - max inversion depth 
 ```
 
-- Parfile parametrization:
+- Parfile configuration:
   
 ```
-algorithm  -  0 = one-plus-lambda, 1 = mu-plus-lambda <br />
+algorithm  -  0 = one-plus-lambda, 1 = mu-plus-lambda 
 
-num_jobs  - type: integer <br />
-num_function_nodes  - type: integer <br />
-num_variables  - type: integer <br />
-num_constants  - type: integer <br />
-constant_type - 0 = Koza true <br />
-num_outputs  -  type: integer <br />
-num_functions  -  type: integer <br />
-max_arity  -  type: integer <br />
+num_jobs  - type: integer 
+num_function_nodes  - type: integer 
+num_variables  - type: integer
+num_constants  - type: integer
+constant_type - 0 = Koza true 
+num_outputs  -  type: integer 
+num_functions  -  type: integer 
+max_arity  -  type: integer 
 
-num_parents  -  type: integer <br /> 
-num_offspring  -  type: integer <br />
+num_parents  -  type: integer 
+num_offspring  -  type: integer
 
 max_fitness_evaluations  -  type: integer  
-ideal_fitness   -  type: generic <br />
-minimizing_fitness  0 = false, 1 = true <br />
+ideal_fitness   -  type: generic 
+minimizing_fitness  0 = false, 1 = true 
 
-crossover_type  0 = false, 1 = true <br />
-crossover_rate   -  type: float,  range: [0.0, 1.0]<br />
+crossover_type  0 = false, 1 = true 
+crossover_rate   -  type: float,  range: [0.0, 1.0]
 
-mutation_type  -   type: integer <br />
-levels_back   -  type: integer <br />
-probabilistic_point_mutation   - type: float, range: [0.0, 1.0]  <br />
-single_active_gene_mutation   - type: float, range: [0.0, 1.0]  <br />
-inversion_mutation  0 = deactivated, 1 = activated <br />
-duplication_mutation  0 = deactivated, 1 = activated <br />
+mutation_type  -   type: integer
+levels_back   -  type: integer 
+probabilistic_point_mutation   - type: float, range: [0.0, 1.0] 
+single_active_gene_mutation   - type: float, range: [0.0, 1.0] 
+inversion_mutation  0 = deactivated, 1 = activated
+duplication_mutation  0 = deactivated, 1 = activated
 point_mutation_rate   - type: float,  range: [0.0, 1.0]
 duplication_rate - type: float,  range: [0.0, 1.0]
 inversion_rate  - type: float,  range: [0.0, 1.0]  
-max_duplication_depth   - type: integer <br />
-max_inversion_depth   - type: integer <br />
+max_duplication_depth   - type: integer
+max_inversion_depth   - type: integer
 
-neutral_genetic_drift  0 = deactivated, 1 = activated
+neutral_genetic_drift  - 0 = deactivated, 1 = activated
 simple_report_type  - 0 = deactivated, 1 = activated
 print_configuration  - 0 = deactivated, 1 = activated  
-evaluate_expression	 - 0 = deactivated, 1 = activated
+evaluate_expression  - 0 = deactivated, 1 = activated
 
 num_eval_threads  - type: integer   
 generate_random_seed   -  0 = deactivated, 1 = activated
