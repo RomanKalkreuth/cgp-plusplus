@@ -68,12 +68,13 @@ DATAFILE PARFILE options
   
 ```
 algorithm  -  0 = one-plus-lambda, 1 = mu-plus-lambda 
+levels_back   -  type: integer
 
 num_jobs  - type: integer 
 num_function_nodes  - type: integer 
 num_variables  - type: integer
 num_constants  - type: integer
-constant_type - 0 = Koza true 
+constant_type - 0 = Koza 
 num_outputs  -  type: integer 
 num_functions  -  type: integer 
 max_arity  -  type: integer 
@@ -83,15 +84,13 @@ num_offspring  -  type: integer
 
 max_fitness_evaluations  -  type: integer  
 ideal_fitness   -  type: generic 
-minimizing_fitness  0 = false, 1 = true 
+minimizing_fitness - 0 = false, 1 = true 
 
-crossover_type  0 = false, 1 = true 
+crossover_type  0 = block, 1 = discrete 
 crossover_rate   -  type: float,  range: [0.0, 1.0]
 
-mutation_type  -   type: integer
-levels_back   -  type: integer 
-probabilistic_point_mutation   - type: float, range: [0.0, 1.0] 
-single_active_gene_mutation   - type: float, range: [0.0, 1.0] 
+probabilistic_point_mutation   - 0 = deactivated, 1 = activated
+single_active_gene_mutation   - 0 = deactivated, 1 = activated
 inversion_mutation  0 = deactivated, 1 = activated
 duplication_mutation  0 = deactivated, 1 = activated
 point_mutation_rate   - type: float,  range: [0.0, 1.0]
