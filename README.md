@@ -121,7 +121,7 @@ checkpoint_modulo  -  type: integer
 write_statfile 0 = deactivated, 1 = activated
 ```
 
-#### Template Setting 
+#### Template Settings 
 
-Template types can be set in the ``template/templates_types.h``` file.  
+Template types can be set in the ```template/templates_types.h``` file.  
 
