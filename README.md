@@ -31,7 +31,9 @@ We recommend compiling CGP++ using the G++ compiler with the following command:
 
 #### Build 
 
-A classical makefile is provided in the ```build``` folder. A CMake makefile will be provided soon. 
+A classical makefile is provided in the ```build``` folder. The command ```make all``` can be used to create the executable.
+
+A CMake file to create cross-compiled binaries is underway. 
 
 ### Basic Usage 
 
@@ -124,4 +126,9 @@ write_statfile 0 = deactivated, 1 = activated
 #### Template Settings 
 
 Template types can be set in the ```template/templates_types.h``` file.  
+
+### Tutorial and Publication
+
+A correspnding paper that describes CGP++ in more detail is currently under review. The CGP++ team also works tirelessly
+on a tutorial which will be released soon. 
 
