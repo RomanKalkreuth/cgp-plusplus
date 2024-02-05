@@ -71,7 +71,7 @@ num_functions  -  type: integer
 max_arity  -  type: integer
 num_parents  -  type: integer 
 num_offspring  -  type: integer 
-max_fitness_evaluations  -  type: integer  
+max_fitness_evaluations  - type: integer  
 ideal_fitness   -  type: generic
 minimizing_fitness  0 = false, 1 = true <br />
 crossover_type  0 = false, 1 = true <br />
@@ -85,7 +85,7 @@ duplication_mutation  0 = deactivated, 1 = activated <br />
 point_mutation_rate   - type: float
 duplication_rate - type: float
 inversion_rate  - type: float  
-max_duplication_depth   - type: float   
+max_duplication_depth  - type: float   
 max_inversion_depth   - type: float  
 neutral_genetic_drift  0 = deactivated, 1 = activated
 simple_report_type  - 0 = deactivated, 1 = activated
@@ -99,6 +99,6 @@ report_after_job  0 = deactivated, 1 = activated
 report_simple  0 = deactivated, 1 = activated
 report_interval	 0 = deactivated, 1 = activated
 checkpointing  0 = deactivated, 1 = activated
-checkpoint_modulo  -  type: integer
+checkpoint_modulo  - type: integer
 write_statfile 0 = deactivated, 1 = activated
 ```
