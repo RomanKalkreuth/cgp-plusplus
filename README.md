@@ -8,6 +8,16 @@ CGP++ also provides a suitable framework that can be used to integrate new sophi
 
 ### Key Feaures and Properties
 
+- Generic design
+- Checkpointing 
+- Mutation piplining
+- Crossover support
+- Parameter interfaces for hyperparameter tuning 
+- Benchmark utilties for symbilic regression and logic synthesis
+  
+
 ### Requirements
+
+Sicne CGP++ uses modern techniques of C++, it has to be compiled with a version of GCC that supports the C++17 standard. 
 
 ### Getting Started
