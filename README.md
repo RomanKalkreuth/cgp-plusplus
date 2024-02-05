@@ -129,6 +129,6 @@ Template types can be set in the ```template/templates_types.h``` file.
 
 ### Tutorial and Publication
 
-A correspnding paper that describes CGP++ in more detail is currently under review. The CGP++ team also works tirelessly
+A corresponding paper that describes CGP++ in more detail is currently under review. The CGP++ team also works tirelessly
 on a tutorial which will be released soon. 
 
