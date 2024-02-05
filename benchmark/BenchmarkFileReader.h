@@ -1,15 +1,15 @@
-// 					CGP++: Modern C++ Implementation of CGP
+//	CGP++: Modern C++ Implementation of Cartesian Genetic Programming
 // ===============================================================================
-//	File
+//	File: BenchmarkFileReader.h
 // ===============================================================================
 //
 // ===============================================================================
-//  Copyright (C) 2023
+//  Copyright (C) 2024
 //
-//  Author(s):
+//  Author(s): Anonymous
 //
-//	License:
-// -===============================================================================
+//	License: Academic Free License v. 3.0
+// ================================================================================
 
 #ifndef BENCHMARKS_BOOL_BENCHMARKREADER_H_
 #define BENCHMARKS_BOOL_BENCHMARKREADER_H_
@@ -23,6 +23,8 @@
 #include <any>
 #include <memory>
 
+/// @brief Class for reading a benchmark file and providing access to the input and output data.
+/// @tparam E Evaluation Type
 template<class E>
 class BenchmarkFileReader {
 private:
@@ -55,6 +57,7 @@ BenchmarkFileReader<E>::BenchmarkFileReader() {
 	outputs = std::make_shared<std::vector<std::vector<E>>>();
 }
 
+/// @brief Prints the input and output data stored in the reader object.
 template<class E>
 void BenchmarkFileReader<E>::print_data() {
 
@@ -88,6 +91,9 @@ void BenchmarkFileReader<E>::print_data() {
 
 }
 
+/// @brief Reads the benchmark file and stores the input and output data in the file reader object.
+/// @tparam E Evaluation Type
+/// @param file_path file path of the benchmark file to be read
 template<class E>
 void BenchmarkFileReader<E>::read_benchmark_file(std::string file_path) {
 
@@ -97,6 +103,7 @@ void BenchmarkFileReader<E>::read_benchmark_file(std::string file_path) {
 
 	std::string extension = std::filesystem::path(file_path).extension();
 
+	// Check if the file extension is valid
 	if (extension != ".plu" && extension != ".dat") {
 		throw std::runtime_error("Method only accepts PLU or DAT files!");
 	}
@@ -111,6 +118,7 @@ void BenchmarkFileReader<E>::read_benchmark_file(std::string file_path) {
 		E input;
 		E output;
 
+		// Read the meta information from the file
 		ifs >> str >> num_inputs;
 		ifs >> str >> num_outputs;
 		ifs >> str >> num_instances;
@@ -118,6 +126,7 @@ void BenchmarkFileReader<E>::read_benchmark_file(std::string file_path) {
 		std::vector<E> input_chunk;
 		std::vector<E> output_chunk;
 
+		// Read the input and output values for each instance
 		for (int i = 0; i < num_instances; i++) {
 
 			for (int j = 0; j < num_inputs; j++) {

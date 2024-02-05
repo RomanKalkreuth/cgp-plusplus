@@ -1,6 +1,6 @@
-// 					CGP++: Modern C++ Implementation of CGP
+//	CGP++: Modern C++ Implementation of Cartesian Genetic Programming
 // ===============================================================================
-//	File
+//	File: MutationPipeline.h
 // ===============================================================================
 //
 // ===============================================================================
@@ -8,8 +8,8 @@
 //
 //  Author(s): Anonymous
 //
-//	License:
-// -===============================================================================
+//	License: Academic Free License v. 3.0
+// ================================================================================
 
 #ifndef MUTATION_MUTATIONPIPELINE_H_
 #define MUTATION_MUTATIONPIPELINE_H_
@@ -25,6 +25,13 @@
 #include "../variation/mutation/ProbabilisticPoint.h"
 #include "../variation/mutation/SingleActiveGene.h"
 
+/// @brief Class to represent the mutation pipeline 
+/// @details Pipelining is established by using a vector that is iterated
+/// when the breeding procedure is called. The mutation operators pushed in the vector 
+/// derive from UnaryOperator class. 
+/// @see UnaryOperator in the variation package
+/// @tparam G Genome Type
+/// @tparam F Fitness Type 
 template<class G, class F>
 class MutationPipeline {
 private:
@@ -47,6 +54,10 @@ public:
 
 };
 
+/// @brief Constructor of MutationPipeline
+/// @param p_parameters shared pointer to parameter instance
+/// @param p_random shared pointer to random generator instance
+/// @param p_species shared pointer to species instance
 template<class G, class F>
 MutationPipeline<G, F>::MutationPipeline(
 		std::shared_ptr<Parameters> p_parameters,
@@ -71,6 +82,9 @@ MutationPipeline<G, F>::MutationPipeline(
 
 }
 
+/// @brief Initializes the mutation pipeline 
+/// @details Instantiates the mutation operators according the configuation 
+/// and adds it to the pipeline vector 
 template<class G, class F>
 void MutationPipeline<G, F>::init() {
 
@@ -102,6 +116,7 @@ void MutationPipeline<G, F>::init() {
 	}
 }
 
+/// @brief Prints the mutation operators of the pipeline 
 template<class G, class F>
 void MutationPipeline<G, F>::print() {
 	int i = 1;
@@ -112,6 +127,8 @@ void MutationPipeline<G, F>::print() {
 
 }
 
+/// @brief Performs the breeding procedure 
+/// @details Iterates over the pipeline and calls the varation method 
 template<class G, class F>
 void MutationPipeline<G, F>::breed(std::shared_ptr<Individual<G, F>> ind) {
 	for (auto it = this->pipeline->begin(); it != this->pipeline->end(); ++it) {

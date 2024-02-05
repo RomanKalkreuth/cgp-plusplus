@@ -1,6 +1,6 @@
-// 					CGP++: Modern C++ Implementation of CGP
+//	CGP++: Modern C++ Implementation of Cartesian Genetic Programming
 // ===============================================================================
-//	File
+//	File: BlockCrossover.h
 // ===============================================================================
 //
 // ===============================================================================
@@ -8,8 +8,8 @@
 //
 //  Author(s): Anonymous
 //
-//	License:
-// -===============================================================================
+//	License: Academic Free License v. 3.0
+// ================================================================================
 
 
 #ifndef VARIATION_CROSSOVER_BLOCKCROSSOVER_H_
@@ -18,6 +18,12 @@
 #include <cmath>
 #include "../BinaryOperator.h"
 
+/// @brief Class for the representation of the block crossover that has proposed for CGP. 
+/// @details  blocks of active geneoes between to CGP genotypes.
+/// @see Husa, J., Kalkreuth, R. (2018). A Comparative Study on Crossover in Cartesian Genetic Programming
+/// https://doi.org/10.1007/978-3-319-77553-1_13
+/// @tparam G Genome type 
+/// @tparam F Fitness type
 template<class G, class F>
 class BlockCrossover: public BinaryOperator<G, F> {
 public:
@@ -42,6 +48,11 @@ public:
 			std::shared_ptr<Individual<G, F>> p2) override;
 };
 
+/// @brief Determines bunch of active nodes that are used for the swap by chance. 
+/// @details Number of nodes depends on the block size. 
+/// @param block_size block size parameter.
+/// @param active_nodes active nodes of the parent. 
+/// @param swap_nodes nodes that are used for the swap 
 template<class G, class F>
 void BlockCrossover<G, F>::determine_swap_nodes(int block_size,
 		std::vector<int> &active_nodes, std::vector<int> &swap_nodes) {

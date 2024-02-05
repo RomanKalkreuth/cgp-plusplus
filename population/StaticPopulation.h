@@ -1,6 +1,6 @@
-// 					CGP++: Modern C++ Implementation of CGP
+//	CGP++: Modern C++ Implementation of Cartesian Genetic Programming
 // ===============================================================================
-//	File
+//	File: StaticPopulation.h 
 // ===============================================================================
 //
 // ===============================================================================
@@ -8,8 +8,8 @@
 //
 //  Author(s): Anonymous
 //
-//	License:
-// -===============================================================================
+//	License: Academic Free License v. 3.0
+// ================================================================================
 
 #ifndef POPULATION_STATICPOPULATION_H_
 #define POPULATION_STATICPOPULATION_H_
@@ -26,6 +26,10 @@
 #include "../representation/Individual.h"
 #include "../random/Random.h"
 
+/// @brief Represents a static population 
+/// @details Static array is used to store the individuals
+/// @tparam G Genome Type
+/// @tparam F Fitness Type 
 template<class G, class F>
 class StaticPopulation: public AbstractPopulation<G, F> {
 private:
@@ -59,6 +63,8 @@ StaticPopulation<G, F>::StaticPopulation(std::shared_ptr<Random> p_random,
 	this->init();
 }
 
+/// @brief Resets the population by iterating over the individuals and 
+/// resetting the genomes 
 template<class G, class F>
 void StaticPopulation<G, F>::reset() {
 	for (int i = 0; i < this->population_size; i++) {
@@ -67,6 +73,8 @@ void StaticPopulation<G, F>::reset() {
 	}
 }
 
+/// @brief Initializes the population by instantiating the individuals
+/// that are reference by a shared pointer 
 template<class G, class F>
 void StaticPopulation<G, F>::init() {
 	for (int i = 0; i < this->population_size; i++) {
@@ -76,6 +84,9 @@ void StaticPopulation<G, F>::init() {
 	}
 }
 
+/// @brief Initializes the population and the correspndonding shared pointer that
+/// is used for referencing 
+/// @return shared pointer to the population instance 
 template<class G, class F>
 std::shared_ptr<std::shared_ptr<Individual<G, F>>[]> StaticPopulation<G, F>::init_population_ptr() {
 
@@ -91,6 +102,8 @@ std::shared_ptr<std::shared_ptr<Individual<G, F>>[]> StaticPopulation<G, F>::ini
 
 }
 
+/// @brief Initializes the population from the genomes provided by a checkpoint. 
+/// @param genomes genomes read from the checkpoint 
 template<class G, class F>
 void StaticPopulation<G, F>::init_from_checkpoint(
 		std::shared_ptr<std::vector<std::vector<std::string>>> genomes) {
@@ -115,6 +128,8 @@ void StaticPopulation<G, F>::init_from_checkpoint(
 	}
 }
 
+/// @brief Sorts the population on this basis of the respective fitness
+/// @details Uses lambda a lambda function for the comparison
 template<class G, class F>
 void StaticPopulation<G, F>::sort() {
 std::sort(this->individuals.get(), this->individuals.get() + this->size(),
@@ -123,6 +138,7 @@ std::sort(this->individuals.get(), this->individuals.get() + this->size(),
 		});
 }
 
+/// @brief Print out the fitness and genome of the individuals
 template<class G, class F>
 void StaticPopulation<G, F>::print() {
 for (int i = 0; i < this->population_size; i++) {
@@ -133,6 +149,8 @@ for (int i = 0; i < this->population_size; i++) {
 }
 }
 
+/// @brief Return the population size 
+/// @return number of individuals
 template<class G, class F>
 int StaticPopulation<G, F>::size() {
 return this->population_size;

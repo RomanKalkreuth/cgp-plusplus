@@ -1,6 +1,6 @@
-// 					CGP++: Modern C++ Implementation of CGP
+//	CGP++: Modern C++ Implementation of Cartesian Genetic Programming
 // ===============================================================================
-//	File
+//	File: AbstractPopulation.h 
 // ===============================================================================
 //
 // ===============================================================================
@@ -8,8 +8,8 @@
 //
 //  Author(s): Anonymous
 //
-//	License:
-// -===============================================================================
+//	License: Academic Free License v. 3.0
+// ================================================================================
 
 #ifndef POPULATION_ABSTRACTPOPULATION_H_
 #define POPULATION_ABSTRACTPOPULATION_H_
@@ -20,6 +20,10 @@
 #include "../representation/Individual.h"
 #include "../random/Random.h"
 
+/// @brief Abstract base class to represent static and dynamic populations.
+/// @details Provides core functions for the handling of the invidiuals and initiliaziation from checkspoints.
+/// @tparam G Genome Type
+/// @tparam F Fitness Type 
 template<class G, class F>
 class AbstractPopulation {
 protected:

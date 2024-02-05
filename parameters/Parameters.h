@@ -1,6 +1,6 @@
-// 					CGP++: Modern C++ Implementation of CGP
+//	CGP++: Modern C++ Implementation of Cartesian Genetic Programming
 // ===============================================================================
-//	File
+//	File Parameters.h
 // ===============================================================================
 //
 // ===============================================================================
@@ -8,8 +8,8 @@
 //
 //  Author(s): Anonymous
 //
-//	License:
-// -===============================================================================
+//	License: Academic Free License v. 3.0
+// ================================================================================
 
 #ifndef PARAMETERS_PARAMETERS_H_
 #define PARAMETERS_PARAMETERS_H_
@@ -29,6 +29,9 @@ typedef unsigned int ALGORITHM;
 #include "../template/template_types.h"
 #include "../constants/erc_types.h"
 
+/// @brief Class to represent the CGP++ configuration
+/// @details Provides getter and setter for the respective parameter and settings and 
+/// severtal configuration types defined by typedef. 
 class Parameters {
 public:
 	const EVAL_METHOD FITNESS_EVALUATIONS_TO_TERMINATION = 0;

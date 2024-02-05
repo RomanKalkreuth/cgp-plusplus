@@ -1,6 +1,6 @@
-// 					CGP++: Modern C++ Implementation of CGP
+//	CGP++: Modern C++ Implementation of Cartesian Genetic Programming
 // ===============================================================================
-//	File
+//	File: Individual.h
 // ===============================================================================
 //
 // ===============================================================================
@@ -8,8 +8,8 @@
 //
 //  Author(s): Anonymous
 //
-//	License:
-// -===============================================================================
+//	License: Academic Free License v. 3.0
+// ================================================================================
 
 
 #ifndef REPRESENGAGION_INDIVIDUAL_H_
@@ -22,6 +22,10 @@
 #include <string>
 #include <sstream>
 
+/// @brief Class to represent integer-based and real-encoded CGP individuals.
+/// @details Provides methods to handle the genome, active nodes and symbolic expressions.
+/// @tparam G Genome type 
+/// @tparam F Fitness type
 template<class G, class F>
 class Individual: public Species<G> {
 private:
@@ -69,6 +73,9 @@ public:
 	void set_expressions(const std::shared_ptr<std::vector<std::string>> &p_expressions);
 };
 
+/// @brief Constructor to intialize the expression and active node vectors
+/// @param p_random shared pointer to random generator instance
+/// @param p_parameters shared pointer to parameter object
 template<class G, class F>
 Individual<G,F>::Individual(std::shared_ptr<Random> p_random,
 		std::shared_ptr<Parameters> p_parameters) :
@@ -84,6 +91,8 @@ Individual<G,F>::Individual(std::shared_ptr<Random> p_random,
 }
 
 
+/// @brief Copy constructor for deep cloning
+/// @param individual individual to clone
 template<class G, class F>
 Individual<G,F>::Individual(std::shared_ptr<Individual<G, F>> individual) :
 		Species<G>(individual->random, individual->parameters) {
@@ -98,12 +107,18 @@ Individual<G,F>::Individual(std::shared_ptr<Individual<G, F>> individual) :
 	this->expressions = std::make_shared<std::vector<std::string>>(*individual->expressions);
 }
 
+/// @brief Returns a random integer in a open interval 
+/// @details Used for initialization of the genotype 
+/// @param min lower bound
+/// @param max upper bound
+/// @return random integer in open interval 
 template<class G, class F>
 int Individual<G,F>::random_value_closed_interval(int min, int max) {
 	int rand = this->random->random_integer(min, max);
 	return rand;
 }
 
+/// @brief Reset genome, active nodes and evaluation status 
 template<class G, class F>
 void Individual<G,F>::reset() {
 	this->reset_genome();
@@ -111,6 +126,8 @@ void Individual<G,F>::reset() {
 	this->evaluated = false;
 }
 
+/// @brief Resets the genome according to the representation type 
+/// @details Distinguishes between integer and real-valued encoding
 template<class G, class F>
 void Individual<G,F>::reset_genome() {
 	int max_gene;
@@ -128,6 +145,8 @@ void Individual<G,F>::reset_genome() {
 	}
 }
 
+// Handling of the active node vector 
+// ---------------------------------------------
 template<class G, class F>
 void Individual<G,F>::clear_active_nodes() {
 	this->active_nodes->clear();
@@ -145,7 +164,11 @@ void Individual<G,F>::print_active_nodes() {
 	}
 	std::cout<<std::endl;
 }
+// ---------------------------------------------
 
+
+// Handling of the expression vector
+// ---------------------------------------------
 template<class G, class F>
 void Individual<G,F>::clear_expressions() {
 	this->expressions->clear();
@@ -155,8 +178,10 @@ template<class G, class F>
 void Individual<G,F>::add_expression(std::string expression) {
 	this->expressions->push_back(expression);
 }
+// ---------------------------------------------
 
 
+/// @brief Print out the genome 
 template<class G, class F>
 void Individual<G,F>::print_genome() {
 	for (int i = 0; i < this->genome_size; i++) {
@@ -165,11 +190,59 @@ void Individual<G,F>::print_genome() {
 	std::cout << std::endl;
 }
 
+/// @brief Concert the genome to a string.
+/// @details Optional use of a delimter to seperate the genes. 
+/// @param delimiter 
+/// @return 
+template<class G, class F>
+const std::string Individual<G, F>::to_string(std::string delimiter) const {
+	std::stringstream ss;
+	for(int i=0; i < this->genome_size; i++) {
+		G g = this->genome[i];
+
+		ss << g;
+
+		if(i < this->genome_size - 1) {
+			ss << delimiter;
+		}
+	}
+	return ss.str();
+}
+
+/// @brief Copy the genome that has been passed to the function
+/// @param p_genome shared pointer to genome array
+template<class G, class F>
+void Individual<G, F>::copy_genome(std::shared_ptr<G[]> p_genome) {
+
+	std::shared_ptr<G[]> genome_copy = std::make_shared<G[]>(this->genome_size);
+
+	std::copy(p_genome.get(), p_genome.get() + this->genome_size, genome_copy.get());
+	this->genome = genome_copy;
+}
+
+/// @brief Trigger deep cloning via copy constructor
+/// @return cloned CGP individual
+template<class G, class F>
+Individual<G,F>* Individual<G, F>::clone() {
+	return new Individual<G,F>(*this);
+}
+
+
+/// @brief Returns the number of actie nodes
+/// @return number of active nodes 
+template<class G, class F>
+int Individual<G, F>::num_active_nodes() {
+	return active_nodes->size();
+}
+
+
+// Getter and setter of indvidual class
+// ---------------------------------------------------------------------------
+
 template<class G, class F>
 F Individual<G,F>::get_fitness() const {
 	return fitness;
 }
-
 
 template<class G, class F>
 void Individual<G,F>::set_fitness(F p_fitness) {
@@ -192,11 +265,6 @@ const std::shared_ptr<std::vector<int> >& Individual<G, F>::get_active_nodes() c
 }
 
 template<class G, class F>
-int Individual<G, F>::num_active_nodes() {
-	return active_nodes->size();
-}
-
-template<class G, class F>
 const std::shared_ptr<std::vector<std::string>>& Individual<G, F>::get_expressions() const {
 	return expressions;
 }
@@ -213,33 +281,7 @@ void Individual<G, F>::set_active_nodes(
 	active_nodes = activeNodes;
 }
 
-template<class G, class F>
-const std::string Individual<G, F>::to_string(std::string delimiter) const {
-	std::stringstream ss;
-	for(int i=0; i < this->genome_size; i++) {
-		G g = this->genome[i];
+// ---------------------------------------------------------------------------
 
-		ss << g;
-
-		if(i < this->genome_size - 1) {
-			ss << delimiter;
-		}
-	}
-	return ss.str();
-}
-
-template<class G, class F>
-void Individual<G, F>::copy_genome(std::shared_ptr<G[]> p_genome) {
-
-	std::shared_ptr<G[]> genome_copy = std::make_shared<G[]>(this->genome_size);
-
-	std::copy(p_genome.get(), p_genome.get() + this->genome_size, genome_copy.get());
-	this->genome = genome_copy;
-}
-
-template<class G, class F>
-Individual<G,F>* Individual<G, F>::clone() {
-	return new Individual<G,F>(*this);
-}
 
 #endif /* REPRESENGAGION_INDIVIDUAL_H_ */

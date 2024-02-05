@@ -1,14 +1,14 @@
-// 					CGP++: Modern C++ Implementation of CGP
+//	CGP++: Modern C++ Implementation of Cartesian Genetic Programming
 // ===============================================================================
-//	File
+//	File: Composite.h
 // ===============================================================================
 //
 // ===============================================================================
-//  Copyright (C) 2023
+//  Copyright (C) 2024
 //
-//  Author(s):
+//  Author(s): Anonymous
 //
-//	License:
+//	License: Academic Free License v. 3.0
 // -===============================================================================
 #ifndef COMPOSITE_COMPOSITE_H_
 #define COMPOSITE_COMPOSITE_H_
@@ -29,6 +29,11 @@
 #include "../problems/BlackBoxProblem.h"
 #include "../benchmark/BenchmarkFileReader.h"
 
+ /// @brief A composite class that represents a combination of various components used 
+ /// for the execution of the evolutionary algorithm.
+ /// @tparam E Evalation type 
+ /// @tparam G Genome type 
+ /// @tparam F Fitness type
 template<class E, class G, class F>
 class Composite {
 private:
@@ -104,9 +109,11 @@ Composite<E, G, F>::Composite(
 	init();
 }
 
+/// @brief Initializes the Composite object by creating and initializing its member variables. 
 template<class E, class G, class F>
 void Composite<E, G, F>::init() {
 
+	// Check if the random seed needs to be generated or if a predefined global seed is provided
 	if (this->parameters->is_generate_random_seed()) {
 		this->random = std::make_shared<Random>(this->parameters);
 	} else {
@@ -170,6 +177,8 @@ void Composite<E, G, F>::print_operators() {
 	std::cout<<std::endl;
 }
 
+
+// Getters and Setters of the composite class 
 
 template<class E, class G, class F>
 const std::shared_ptr<Evaluator<E, G, F> >& Composite<E, G, F>::get_evaluator() const {

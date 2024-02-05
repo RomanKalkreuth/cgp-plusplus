@@ -1,6 +1,6 @@
-// 					CGP++: Modern C++ Implementation of CGP
+//	CGP++: Modern C++ Implementation of Cartesian Genetic Programming
 // ===============================================================================
-//	File
+//	File: Phenotypic.h
 // ===============================================================================
 //
 // ===============================================================================
@@ -8,14 +8,17 @@
 //
 //  Author(s): Anonymous
 //
-//	License:
-// -===============================================================================
+//	License: Academic Free License v. 3.0
+// ================================================================================
 
 #ifndef VARIATION_MUTATION_PHENOTYPIC_H_
 #define VARIATION_MUTATION_PHENOTYPIC_H_
 
 #include "../UnaryOperator.h"
 
+/// @brief Abstract base class for the implementation of phenotypic mutation in CGP. 
+/// @tparam G Genome type 
+/// @tparam F Fitness type
 template<class G, class F>
 class Phenotypic : public UnaryOperator<G,F>  {
 protected:
@@ -33,6 +36,10 @@ public:
 	int stochastic_depth(int max_depth, int num_active_function_nodes);
 };
 
+/// @brief Determines a start position for the mutation within the genome by chance. 
+/// @param num_active_function_nodes number of active function nodes
+/// @param depth mutation depth, number of function genes that will be considered
+/// @return start position in the genome 
 template<class G, class F>
 int Phenotypic<G,F>::start_index(int num_active_function_nodes, int depth) {
 		int start_max = num_active_function_nodes - depth;
@@ -47,6 +54,10 @@ int Phenotypic<G,F>::start_index(int num_active_function_nodes, int depth) {
 		return start;
 }
 
+/// @brief Determnes the depth of the mutation by chance
+/// @param max_depth maximum depth of the mutation
+/// @param num_active_function_nodes number of active function nodes
+/// @return mutation depth
 template<class G, class F>
 int Phenotypic<G,F>::stochastic_depth(int max_depth, int num_active_function_nodes) {
 	int depth;

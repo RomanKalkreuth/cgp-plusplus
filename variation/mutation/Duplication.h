@@ -1,6 +1,6 @@
-// 					CGP++: Modern C++ Implementation of CGP
+//	CGP++: Modern C++ Implementation of Cartesian Genetic Programming
 // ===============================================================================
-//	File
+//	File: Duplication.h
 // ===============================================================================
 //
 // ===============================================================================
@@ -8,14 +8,20 @@
 //
 //  Author(s): Anonymous
 //
-//	License:
-// -===============================================================================
+//	License: Academic Free License v. 3.0
+// ================================================================================
 
 #ifndef VARIATION_MUTATION_DUPLICATION_H_
 #define VARIATION_MUTATION_DUPLICATION_H_
 
 #include "Phenotypic.h"
 
+/// @brief Represents the duplication mutation operator that has been proposed for CGP. 
+/// @details Duplicates function genes among subsequent function nodes. 
+/// @see Kalkreuth R. (2022): Phenotypic duplication and inversion in cartesian genetic programming applied to boolean function learning
+/// https://doi.org/10.1145/3520304.3529065
+/// @tparam G Genome type 
+/// @tparam F Fitness type
 template<class G, class F>
 class Duplication: public Phenotypic<G, F> {
 public:
@@ -39,6 +45,10 @@ Duplication<G, F>::Duplication(
 }
 ;
 
+/// @brief Mutate an individual by means of duplication.
+/// @details Selects a random start position in the genome and duplicates the function gene
+/// to a set of subsequent function nodes. 
+/// @param individual CGP individual to mutate
 template<class G, class F>
 void Duplication<G, F>::variate(
 		std::shared_ptr<Individual<G, F>> individual) {

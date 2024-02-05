@@ -1,6 +1,6 @@
-// 					CGP++: Modern C++ Implementation of CGP
+//	CGP++: Modern C++ Implementation of Cartesian Genetic Programming
 // ===============================================================================
-//	File
+//	File: Mutation.h 
 // ===============================================================================
 //
 // ===============================================================================
@@ -8,8 +8,8 @@
 //
 //  Author(s): Anonymous
 //
-//	License:
-// -===============================================================================
+//	License: Academic Free License v. 3.0
+// ================================================================================
 
 #ifndef MUTATION_H_
 #define MUTATION_H_
@@ -24,6 +24,9 @@
 #include <iostream>
 #include <memory>
 
+/// @brief Class to represents that handles the mutation procedure. 
+/// @tparam G Genome Type
+/// @tparam F Fitness Type 
 template<class G, class F>
 class Mutation {
 private:
@@ -46,6 +49,12 @@ public:
 	void set_pipeline(const std::shared_ptr<MutationPipeline<G, F> > &pipeline);
 };
 
+
+/// @brief Constructor that sets the hyperparameters required for mutation
+/// @details Instantiates the mutation pipeline by that referenced with a shared pointer  
+/// @param p_parameters shared pointer to paramter object
+/// @param p_random shared pointer torandom generator instance
+/// @param p_species shared pointer to species instance 
 template<class G, class F>
 Mutation<G, F>::Mutation(std::shared_ptr<Parameters> p_parameters,
 		std::shared_ptr<Random> p_random,
@@ -74,6 +83,8 @@ Mutation<G, F>::Mutation(std::shared_ptr<Parameters> p_parameters,
 	this->pipeline = std::make_shared<MutationPipeline<G,F>>(p_parameters, p_random, p_species);
 }
 
+/// @brief Triggers the variation process of the configured mutation pipeline.  
+/// @param parent selected parent individual 
 template<class G, class F>
 void Mutation<G, F>::mutate(std::shared_ptr<Individual<G, F>> parent) {
 	this->pipeline->breed(parent);

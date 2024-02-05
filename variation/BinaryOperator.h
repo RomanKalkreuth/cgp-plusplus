@@ -1,6 +1,6 @@
-// 					CGP++: Modern C++ Implementation of CGP
+//	CGP++: Modern C++ Implementation of Cartesian Genetic Programming
 // ===============================================================================
-//	File
+//	File: BinaryOperator.h
 // ===============================================================================
 //
 // ===============================================================================
@@ -8,8 +8,8 @@
 //
 //  Author(s): Anonymous
 //
-//	License:
-// -===============================================================================
+//	License: Academic Free License v. 3.0
+// ================================================================================
 
 #ifndef VARIATION_BINARYOPERATOR_H_
 #define VARIATION_BINARYOPERATOR_H_
@@ -19,6 +19,9 @@
 
 #include <memory>
 
+/// @brief Abstract base class to represent a binary genetic operator such as recombination. 
+/// @tparam G Genome type 
+/// @tparam F Fitness type
 template <class G, class F>
 class BinaryOperator : public GeneticOperator<G,F> {
 public:

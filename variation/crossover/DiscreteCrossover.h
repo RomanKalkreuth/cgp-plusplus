@@ -1,6 +1,6 @@
-// 					CGP++: Modern C++ Implementation of CGP
+//	CGP++: Modern C++ Implementation of Cartesian Genetic Programming
 // ===============================================================================
-//	File
+//	File: DiscreteCrossover.h
 // ===============================================================================
 //
 // ===============================================================================
@@ -8,8 +8,8 @@
 //
 //  Author(s): Anonymous
 //
-//	License:
-// -===============================================================================
+//	License: Academic Free License v. 3.0
+// ================================================================================
 
 
 #ifndef VARIATION_CROSSOVER_DISCRETECROSSOVER_H_
@@ -19,6 +19,12 @@
 
 #include "../BinaryOperator.h"
 
+/// @brief Class for the representation of discrete recombination that has been proposed for CGP. 
+/// @details Adaption of discrete recombination found in numerical optimization. 
+/// @see Kalkreuth, R. (2022). Towards Discrete Phenotypic Recombination in Cartesian Genetic Programming.
+/// https://doi.org/10.1007/978-3-031-14721-0_5
+/// @tparam G Genome type 
+/// @tparam F Fitness type
 template<class G, class F>
 class DiscreteCrossover: public BinaryOperator<G, F> {
 public:

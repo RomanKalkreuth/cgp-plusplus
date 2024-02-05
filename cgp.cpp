@@ -1,14 +1,14 @@
-// 					CGP++: Modern C++ Implementation of CGP
+//	CGP++: Modern C++ Implementation of CGP
 // ===============================================================================
-//	File
+//	File cgp.cpp
 // ===============================================================================
 //
 // ===============================================================================
-//  Copyright (C) 2023
+//  Copyright (C) 2024
 //
 //  Author(s):
 //
-//	License:
+//	License: Academic Free License v. 3.0
 // -===============================================================================
 
 #include <string>
@@ -197,12 +197,6 @@ int main(int argcc, char **argvv, char **envp) {
 		}
 
 	}
-
-	//std::shared_ptr<
-	//		LogicSynthesisInitializer<EVALUATION_TYPE, GENOME_TYPE,
-	//				FITNESS_TYPE>> initializer = std::make_shared<
-	//		LogicSynthesisInitializer<EVALUATION_TYPE, GENOME_TYPE,
-	//				FITNESS_TYPE>>(data_file);
 
 	std::shared_ptr<
 			SymbolicRegressionInitializer<EVALUATION_TYPE, GENOME_TYPE,

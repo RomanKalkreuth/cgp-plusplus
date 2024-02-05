@@ -1,21 +1,23 @@
-// 					CGP++: Modern C++ Implementation of CGP
+//	CGP++: Modern C++ Implementation of Cartesian Genetic Programming
 // ===============================================================================
-//	File
+//	File: ObjectiveFunctions.h 
 // ===============================================================================
 //
 // ===============================================================================
-//  Copyright (C) 2023
+//  Copyright (C) 2024
 //
-//  Author(s):
+//  Author(s): Anonymous
 //
-//	License:
-// -===============================================================================
+//	License: Academic Free License v. 3.0
+// ================================================================================
 
 #ifndef BENCHMARK_SYMBOLIC_REGRESSION_OBJECTIVEFUNCTIONS_H_
 #define BENCHMARK_SYMBOLIC_REGRESSION_OBJECTIVEFUNCTIONS_H_
 
-#import <cmath>
+#include <cmath>
 
+/// @brief Subset of objective functions proposed by McDermott et al. (2012) 
+/// @see https://doi.org/10.1145/2330163.2330273
 class ObjectiveFunctions {
 public:
 	ObjectiveFunctions() = delete;

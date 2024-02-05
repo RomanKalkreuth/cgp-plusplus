@@ -1,15 +1,15 @@
-// 					CGP++: Modern C++ Implementation of CGP
+//	CGP++: Modern C++ Implementation of Cartesian Genetic Programming
 // ===============================================================================
-//	File
+//	File: ERC.h
 // ===============================================================================
 //
 // ===============================================================================
-//  Copyright (C) 2023
+//  Copyright (C) 2024
 //
-//  Author(s):
+//  Author(s): Anonymous
 //
-//	License:
-// -===============================================================================
+//	License: Academic Free License v. 3.0
+// ================================================================================
 
 #ifndef ERC_ERC_H_
 #define ERC_ERC_H_
@@ -18,14 +18,20 @@
 #include "../random/Random.h"
 #include "erc_types.h"
 
+/// @brief Represents an ERC (Ephemeral Random Constant) as used in GP.
 class ERC {
 public:
 	ERC();
 
+	// Defines the different types of ERC
 	static const ERC_TYPE KOZA = 0;
 	static const ERC_TYPE ONE = 1;
 	static const ERC_TYPE TWO = 2;
 
+	/// @brief Generate an ERC of the specified type
+	/// @param p_random Pointer to the random number generator instace
+ 	/// @param type The type of ERC to generate
+ 	/// @return The generated ERC value
 	static float generate_ERC(std::shared_ptr<Random> p_random, ERC_TYPE type) {
 		switch (type) {
 		case KOZA:
@@ -45,6 +51,9 @@ public:
 		}
 	}
 
+	/// @brief Get the name of the ERC typ
+	/// @param type The type of ERC
+	/// @return The name of the ERC type as string.
 	static std::string erc_name(ERC_TYPE type) {
 		switch (type) {
 		case KOZA:

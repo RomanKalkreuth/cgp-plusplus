@@ -1,6 +1,6 @@
-// 					CGP++: Modern C++ Implementation of CGP
+//	CGP++: Modern C++ Implementation of Cartesian Genetic Programming
 // ===============================================================================
-//	File
+//	File: Initializer.h
 // ===============================================================================
 //
 // ===============================================================================
@@ -8,8 +8,8 @@
 //
 //  Author(s): Anonymous
 //
-//	License:
-// -===============================================================================
+//	License: Academic Free License v. 3.0
+// ================================================================================
 
 #ifndef INITIALIZER_INITIALIZER_H_
 #define INITIALIZER_INITIALIZER_H_
@@ -34,6 +34,14 @@
 #include "../constants/ERC.h"
 #include "../checkpoint/Checkpoint.h"
 
+/// @brief Initializer class for CGP++ that sets up central elements requred to set 
+/// up a run 
+/// @details Used to initialize elements such as composite, algorithm, constants, \
+/// checkpointer, problem and functions. The objects are instantiated with the make_shared function
+/// to wrap them as shared pointers 
+/// @tparam E Evaluation Type
+/// @tparam G Genotype Type
+/// @tparam F Fitness Type 
 template<class E, class G, class F>
 class Initializer {
 protected:
@@ -75,11 +83,13 @@ public:
 	virtual void init_functions() = 0;
 };
 
+/// @brief Constructor that instantiates the parameter object. 
 template<class E, class G, class F>
 Initializer<E, G, F>::Initializer() {
 	parameters = std::make_shared<Parameters>();
 }
 
+/// @brief Overloaded constructor that sets the passed bnechmark file. 
 template<class E, class G, class F>
 Initializer<E, G, F>::Initializer(const std::string &p_benchmark_file) :
 		Initializer() {
@@ -93,6 +103,10 @@ Initializer<E, G, F>::Initializer(const std::string &p_benchmark_file) :
 
 }
 
+/// @brief Reads the parameters from the parameter file. 
+/// @details The parameters read from the file are either set as values or states. 
+/// Sets the respective parameters in the parameter object. 
+/// @param parfile_path path to the parameter file 
 template<class E, class G, class F>
 void Initializer<E, G, F>::init_parfile_parameters(std::string parfile_path) {
 
@@ -212,6 +226,8 @@ void Initializer<E, G, F>::init_parfile_parameters(std::string parfile_path) {
 	}
 }
 
+/// @brief Initializes the commandline parameters that have been read in the main function. 
+/// @details Sets the respective parameters in the parameter object. 
 template<class E, class G, class F>
 void Initializer<E, G, F>::init_comandline_parameters(int p_algorithm,
 		int p_num_nodes, int p_num_variables, int p_num_constants,
@@ -264,6 +280,7 @@ void Initializer<E, G, F>::init_comandline_parameters(int p_algorithm,
 
 }
 
+/// @brief Inits the number of ERC's according to the predefined type. 
 template<class E, class G, class F>
 void Initializer<E, G, F>::init_erc() {
 	int num_constants = this->parameters->get_num_constants();
@@ -281,6 +298,7 @@ void Initializer<E, G, F>::init_erc() {
 	this->constants = constants;
 }
 
+/// @brief Inits the composite class 
 template<class E, class G, class F>
 void Initializer<E, G, F>::init_composite() {
 	this->composite = std::make_shared<Composite<E, G, F>>(parameters,
@@ -289,6 +307,9 @@ void Initializer<E, G, F>::init_composite() {
 	this->evaluator = composite->get_evaluator();
 }
 
+/// @brief Inits the evolutionary algorithm 
+/// @details The algorithm is instantiated according to the type setting 
+/// in the parameter object. 
 template<class E, class G, class F>
 void Initializer<E, G, F>::init_algorithm() {
 	if (this->parameters->get_algorithm()
@@ -304,12 +325,16 @@ void Initializer<E, G, F>::init_algorithm() {
 	}
 }
 
+/// @brief Inits the checkpointer.
+/// @details Sets the checkpointer in the composite. 
 template<class E, class G, class F>
 void Initializer<E, G, F>::init_checkpoint() {
 	this->checkpoint = std::make_shared<Checkpoint<E, G, F>>(parameters);
 	this->composite->set_checkpoint(this->checkpoint);
 }
 
+/// @brief Init a checkpoint from a the corresponding file in case its passed  to CGP++
+/// @param checkpoint_file path to the checkpoint file 
 template<class E, class G, class F>
 void Initializer<E, G, F>::init_checkpoint_file(std::string &checkpoint_file) {
 	int generation_number = this->checkpoint->load(
@@ -319,6 +344,8 @@ void Initializer<E, G, F>::init_checkpoint_file(std::string &checkpoint_file) {
 	std::cout << "Loaded chekpoint file " << checkpoint_file << std::endl
 			<< std::endl;
 }
+
+// Getter of the initializer class 
 
 template<class E, class G, class F>
 const std::shared_ptr<Composite<E, G, F> >& Initializer<E, G, F>::get_composite() const {

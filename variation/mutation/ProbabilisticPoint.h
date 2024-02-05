@@ -1,6 +1,6 @@
-// 					CGP++: Modern C++ Implementation of CGP
+//	CGP++: Modern C++ Implementation of Cartesian Genetic Programming
 // ===============================================================================
-//	File
+//	File: ProbabilisticPoint.h
 // ===============================================================================
 //
 // ===============================================================================
@@ -8,14 +8,20 @@
 //
 //  Author(s): Anonymous
 //
-//	License:
-// -===============================================================================
+//	License: Academic Free License v. 3.0
+// ================================================================================
+
 
 #ifndef VARIATION_POINTMUTATION_H_
 #define VARIATION_POINTMUTATION_H_
 
 #include "../UnaryOperator.h"
 
+/// @brief Standard probabilistic point mutation commonly used in CGP. 
+/// @see Miller, J.F. (2011). Cartesian Genetic Programming.
+/// https://doi.org/10.1007/978-3-642-17310-3_2
+/// @tparam G Genome type 
+/// @tparam F Fitness type
 template <class G, class F>
 class ProbabilisticPoint : public UnaryOperator<G,F> {
 private:
@@ -38,6 +44,10 @@ ProbabilisticPoint<G, F>::ProbabilisticPoint(std::shared_ptr<Parameters> p_param
 		this->mutation_rate = this->parameters->get_mutation_rate();
 }
 
+/// @brief Performs the standard (probabilistic) point mutation.
+/// @details Selects gene by chanc according to a mutation rate and mutates
+/// the gene values in the legal range. 
+/// @param individual CGP individual to mutate
 template <class G, class F>
 void ProbabilisticPoint<G, F>::variate(std::shared_ptr<Individual<G, F>> individual) {
 

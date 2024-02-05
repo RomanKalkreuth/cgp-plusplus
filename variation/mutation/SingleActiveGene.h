@@ -1,6 +1,6 @@
-// 					CGP++: Modern C++ Implementation of CGP
+//	CGP++: Modern C++ Implementation of Cartesian Genetic Programming
 // ===============================================================================
-//	File
+//	File: SingleActiveGene.h
 // ===============================================================================
 //
 // ===============================================================================
@@ -8,14 +8,22 @@
 //
 //  Author(s): Anonymous
 //
-//	License:
-// -===============================================================================
+//	License: Academic Free License v. 3.0
+// ================================================================================
+
+
 
 #ifndef VARIATION_SINGLEACTIVEGENEMUTATION_H_
 #define VARIATION_SINGLEACTIVEGENEMUTATION_H_
 
 #include "../UnaryOperator.h"
 
+/// @brief Represents the single active gene mutation that has been proposed for CGP. 
+/// @details Mutates exactly one active gene per mutation.
+/// @see Goldman, B.W., Punch, W.F. (2013): Reducing Wasted Evaluations in Cartesian Genetic Programming
+/// https://doi.org/10.1007/978-3-642-37207-0_6
+/// @tparam G Genome type 
+/// @tparam F Fitness type
 template<class G, class F>
 class SingleActiveGene: public UnaryOperator<G, F> {
 public:
@@ -35,6 +43,8 @@ SingleActiveGene<G, F>::SingleActiveGene(std::shared_ptr<Parameters> p_parameter
 		this->name = "Single Active Gene";
 }
 
+/// @brief Selects one active gene by chance which is then mutated 
+/// @param individual CGP individual to mutate
 template<class G, class F>
 void SingleActiveGene<G, F>::variate(
 		std::shared_ptr<Individual<G, F>> individual) {

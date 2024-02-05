@@ -1,6 +1,6 @@
-// 					CGP++: Modern C++ Implementation of CGP
+//	CGP++: Modern C++ Implementation of Cartesian Genetic Programming
 // ===============================================================================
-//	File
+//	File: Random.h
 // ===============================================================================
 //
 // ===============================================================================
@@ -8,7 +8,7 @@
 //
 //  Author(s): Anonymous
 //
-//	License:
+//	License: Academic Free License v. 3.0
 // -===============================================================================
 
 
@@ -25,6 +25,8 @@
 
 using namespace std;
 
+/// @brief Class to represent a random generator instance. 
+/// @details Uses the mt19937 random genrator. 
 class Random {
 private:
 	long long global_seed;

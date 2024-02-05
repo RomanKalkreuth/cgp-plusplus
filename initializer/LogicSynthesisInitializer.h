@@ -1,6 +1,6 @@
-// 					CGP++: Modern C++ Implementation of CGP
+//	CGP++: Modern C++ Implementation of Cartesian Genetic Programming
 // ===============================================================================
-//	File
+//	File: LogicSynthesisInitializer.h 
 // ===============================================================================
 //
 // ===============================================================================
@@ -8,8 +8,8 @@
 //
 //  Author(s): Anonymous
 //
-//	License:
-// -===============================================================================
+//	License: Academic Free License v. 3.0
+// ================================================================================
 
 #ifndef INITIALIZER_LOGICSYNTHESISINITIALIZER_H_
 #define INITIALIZER_LOGICSYNTHESISINITIALIZER_H_
@@ -21,6 +21,12 @@
 #include "../functions/BooleanFunctions.h"
 #include "BlackBoxInitializer.h"
 
+
+/// @brief Derived intializer class for logic synthesis problems. 
+/// @details Initializes the defined logic synthesis problem. 
+/// @tparam E Evaluation Type
+/// @tparam G Genotype Type
+/// @tparam F Fitness Type 
 template<class E, class G, class F>
 class LogicSynthesisInitializer: public  BlackBoxInitializer<E, G, F> {
 
@@ -37,7 +43,7 @@ LogicSynthesisInitializer<E, G, F>::LogicSynthesisInitializer(
 		BlackBoxInitializer<E, G, F>(p_benchmark_file) {
 }
 
-
+/// @brief Initializes the logic synthesis problem instance. 
 template<class E, class G, class F>
 void LogicSynthesisInitializer<E, G, F>::init_problem() {
 
@@ -48,6 +54,8 @@ void LogicSynthesisInitializer<E, G, F>::init_problem() {
 	this->composite->set_problem(problem);
 }
 
+
+/// @brief Initializes the funcion set used for logic synthesis problems. 
 template<class E, class G, class F>
 void LogicSynthesisInitializer<E, G, F>::init_functions() {
 	this->functions = std::make_shared<FunctionsBoolean<E>>(this->parameters);

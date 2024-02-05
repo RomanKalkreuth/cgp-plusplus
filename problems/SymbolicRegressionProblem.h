@@ -1,6 +1,6 @@
-// 					CGP++: Modern C++ Implementation of CGP
+//	CGP++: Modern C++ Implementation of Cartesian Genetic Programming
 // ===============================================================================
-//	File
+//	File: SymbolicRegressionProblem.h
 // ===============================================================================
 //
 // ===============================================================================
@@ -8,8 +8,8 @@
 //
 //  Author(s): Anonymous
 //
-//	License:
-// -===============================================================================
+//	License: Academic Free License v. 3.0
+// ================================================================================
 
 #ifndef PROBLEMS_SYMBOLICREGRESSIONPROBLEM_H_
 #define PROBLEMS_SYMBOLICREGRESSIONPROBLEM_H_
@@ -18,6 +18,11 @@
 
 #include <cmath>
 
+/// @brief Class to represent of a sybolic regression problem.
+/// @details Absolute difference is used fitness calculation.
+/// @tparam E Evalation type 
+/// @tparam G Genome type 
+/// @tparam F Fitness type
 template<class E, class G, class F>
 class SymbolicRegressionProblem: public BlackBoxProblem<E, G, F> {
 private:
@@ -50,6 +55,12 @@ SymbolicRegressionProblem<E, G, F>::SymbolicRegressionProblem(
 
 }
 
+/// @brief Evaluates the outputs on an individual against the real outputs of the problem.
+/// @details Fitness is obtained by calculation the sum of the absolute difference between the real 
+/// function values and values obtained after evaluation of the individual. 
+/// @param outputs_real 
+/// @param outputs_individual 
+/// @return 
 template<class E, class G, class F>
 F SymbolicRegressionProblem<E, G, F>::evaluate(
 		std::shared_ptr<std::vector<E>> outputs_real,

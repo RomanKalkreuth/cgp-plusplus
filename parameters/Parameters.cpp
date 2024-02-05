@@ -1,6 +1,6 @@
-// 					CGP++: Modern C++ Implementation of CGP
+//	CGP++: Modern C++ Implementation of Cartesian Genetic Programming
 // ===============================================================================
-//	File
+//	File: Parameters.cpp
 // ===============================================================================
 //
 // ===============================================================================
@@ -8,8 +8,8 @@
 //
 //  Author(s): Anonymous
 //
-//	License:
-// -===============================================================================
+//	License: Academic Free License v. 3.0
+// ================================================================================
 
 #include "Parameters.h"
 
@@ -62,6 +62,7 @@ Parameters::Parameters() {
 	mutation_operators = std::make_shared<std::vector<MUTATION_TYPE>>();
 }
 
+/// @brief Print the detailed configuration of CGP++ 
 void Parameters::print() {
 
 	std::cout << "Number of function nodes: " << this->num_function_nodes
@@ -105,6 +106,10 @@ void Parameters::print() {
 	std::cout << "Global seed: " << global_seed << std::endl;
 	std::cout << std::endl;
 }
+
+
+// Getter and setter of parameter class
+// ------------------------------------------------------------------------------------------
 
 void Parameters::set_eval_chunk_size() {
 	assert(this->num_eval_threads <= this->population_size);
@@ -513,3 +518,4 @@ bool Parameters::is_checkpointing() const {
 void Parameters::set_checkpointing(bool p_checkpointing) {
 	this->checkpointing = p_checkpointing;
 }
+// ------------------------------------------------------------------------------------------

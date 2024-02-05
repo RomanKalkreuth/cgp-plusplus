@@ -1,6 +1,6 @@
-// 					CGP++: Modern C++ Implementation of CGP
+//	CGP++: Modern C++ Implementation of Cartesian Genetic Programming
 // ===============================================================================
-//	File
+//	File: Recombination.h
 // ===============================================================================
 //
 // ===============================================================================
@@ -8,8 +8,8 @@
 //
 //  Author(s): Anonymous
 //
-//	License:
-// -===============================================================================
+//	License: Academic Free License v. 3.0
+// ================================================================================
 
 
 #ifndef RECOMBINATION_RECOMBINATION_H_
@@ -26,6 +26,10 @@
 #include <stdexcept>
 #include <memory>
 
+
+/// @brief Class to represent and handle the recombination procedure.
+/// @tparam G Genome type 
+/// @tparam F Fitness type
 template<class G, class F>
 class Recombination {
 private:
@@ -51,6 +55,11 @@ public:
 	void print();
 };
 
+/// @brief Constructor to instantiate the crossover operator.
+/// @details Crossover is chosen based on the setting in the parameter object. 
+/// @param p_parameters shared pointer to parameter object
+/// @param p_random shared pointer to random generator instance
+/// @param p_species shared pointer to species instance 
 template<class G, class F>
 Recombination<G, F>::Recombination(std::shared_ptr<Parameters> p_parameters,
 		std::shared_ptr<Random> p_random,
@@ -86,12 +95,16 @@ Recombination<G, F>::Recombination(std::shared_ptr<Parameters> p_parameters,
 	}
 }
 
+/// @brief Trigger the recombination procedure. 
+/// @param p1 first parent 
+/// @param p2 second parent
 template<class G, class F>
 void Recombination<G, F>::crossover(std::shared_ptr<Individual<G, F>> p1,
 		std::shared_ptr<Individual<G, F>> p2) {
 	this->op->variate(p1, p2);
 }
 
+/// @brief Print the recobination name. 
 template<class G, class F>
 void Recombination<G, F>::print() {
 	std::cout<<"Recombination: ";

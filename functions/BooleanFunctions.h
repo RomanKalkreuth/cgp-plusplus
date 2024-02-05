@@ -1,15 +1,15 @@
-// 					CGP++: Modern C++ Implementation of CGP
+//	CGP++: Modern C++ Implementation of Cartesian Genetic Programming
 // ===============================================================================
-//	File
+//	File BooleanFunctions.h 
 // ===============================================================================
 //
 // ===============================================================================
-//  Copyright (C) 2023
+//  Copyright (C) 2024
 //
-//  Author(s):
+//  Author(s): Anonymous
 //
-//	License:
-// -===============================================================================
+//	License: Academic Free License v. 3.0
+// ================================================================================
 
 #ifndef FUNCTIONS_BOOLEANFUNCTIONS_H_
 #define FUNCTIONS_BOOLEANFUNCTIONS_H_
@@ -21,6 +21,10 @@
 #include <any>
 #include <sstream>
 
+/// @brief Class to represent a function set of Boolean functions 
+/// @details Ensures that only datatypes such as long, unsigned int and unsigned long 
+/// that fit the domain of the considered Boolean functions are used with this class
+/// @tparam E Evaluation type 
 template<class E>
 class FunctionsBoolean: public Functions<E> {
 public:
@@ -52,6 +56,12 @@ FunctionsBoolean<E>::FunctionsBoolean(std::shared_ptr<Parameters> p_parameters) 
 
 }
 
+/// @brief Provides a Boolean functions such as AND, OR, NAND, NOR.
+/// @details Configuration is commonly used for a reduced function set in logic synthesis 
+/// as approached with genetic programming. 
+/// @param inputs pair of inputs values
+/// @param function index of the functions to call 
+/// @return result of the function call
 template<class E>
 E FunctionsBoolean<E>::call_function(E inputs[], int function) {
 
@@ -83,6 +93,7 @@ E FunctionsBoolean<E>::call_function(E inputs[], int function) {
 	return result;
 
 }
+
 
 template<class E>
 std::string FunctionsBoolean<E>::FunctionsBoolean::function_name(int function) {

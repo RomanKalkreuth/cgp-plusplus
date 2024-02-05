@@ -1,6 +1,6 @@
-// 					CGP++: Modern C++ Implementation of CGP
+//	CGP++: Modern C++ Implementation of Cartesian Genetic Programming
 // ===============================================================================
-//	File
+//	File: Species.h
 // ===============================================================================
 //
 // ===============================================================================
@@ -8,8 +8,8 @@
 //
 //  Author(s): Anonymous
 //
-//	License:
-// -===============================================================================
+//	License: Academic Free License v. 3.0
+// ================================================================================
 
 
 #ifndef REPRESENGAGION_SPECIES_H_
@@ -24,6 +24,9 @@
 #include "../random/Random.h"
 #include "../parameters/Parameters.h"
 
+/// @brief Base class to represet an individual. 
+/// @details Used to instantiate inter-based and real-valued encoded individuals. 
+/// @tparam G Genome type
 template<class G>
 class Species {
 public:
@@ -103,12 +106,19 @@ Species<G>::Species(std::shared_ptr<Random> p_random,
 	levels_back = parameters->get_levels_back();
 }
 
+/// @brief Calculates the size of the genome.
+/// @details Includes number of function nodes, max arity and num outputs.
+/// @return size of the genome 
 template<class G>
 int Species<G>::calc_genome_size() {
 	int genome_size = num_nodes * (max_arity + 1) + num_outputs;
 	return genome_size;
 }
 
+/// @brief Returns the minimum gene for the given position.
+/// @details Depending on the type of the gene at the specified position. 
+/// @param position position in the genome
+/// @return minimum gene value
 template<class G>
 int Species<G>::min_gene(int position) {
 	int min_gene;
@@ -131,6 +141,10 @@ int Species<G>::min_gene(int position) {
 	return min_gene;
 }
 
+/// @brief Returns the maximum gene for the given position.
+/// @details Depending on the type of the gene at the specified position. 
+/// @param position position in the genome
+/// @return maximum gene value
 template<class G>
 int Species<G>::max_gene(int position) {
 	int max_gene;
@@ -147,6 +161,9 @@ int Species<G>::max_gene(int position) {
 	return max_gene;
 }
 
+/// @brief Decodes the genotype at a specified position.
+/// @param position specified position
+/// @return phenotype at the specified position
 template<class G>
 int Species<G>::decode_genotype_at(int position) {
 	if (position >= num_nodes * (max_arity + 1)) {
@@ -159,6 +176,9 @@ int Species<G>::decode_genotype_at(int position) {
 
 }
 
+/// @brief Calculate the node number at a specified position.
+/// @param position specified position
+/// @return node number of specified position
 template<class G>
 int Species<G>::node_number_from_position(int position) {
 
@@ -174,11 +194,18 @@ int Species<G>::node_number_from_position(int position) {
 	return node_number;
 }
 
+/// @brief Return the position of specified node.
+/// @param node_number specified node number
+/// @return position at the specified node number 
 template<class G>
 int Species<G>::position_from_node_number(int node_number) {
 	return (node_number - num_inputs) * (max_arity + 1);
 }
 
+/// @brief 
+/// @param value 
+/// @param position 
+/// @return 
 template<class G>
 int Species<G>::interpret_float(float value, int position) {
 
@@ -201,12 +228,15 @@ int Species<G>::interpret_float(float value, int position) {
 	return node_value;
 }
 
+/// @brief Decode a real-valued encoded genotype to an integer one. 
+/// @details Wraps the integer genome in a unique pointer. 
+/// @return unique pointer to integer-based genotype 
 template<class G>
 std::unique_ptr<int[]> Species<G>::float_to_int() {
 
 	if (!this->real_valued) {
 		throw std::runtime_error(
-				"Ghis method only supports real valued genomes!");
+				"This method only supports real valued genomes!");
 	}
 
 	std::unique_ptr<int[]> genome_int = std::make_unique<int[]>(
@@ -221,6 +251,9 @@ std::unique_ptr<int[]> Species<G>::float_to_int() {
 	return genome_int;
 
 }
+
+// Getter and setter of species class
+// ---------------------------------------------------------------------------
 
 template<class G>
 std::shared_ptr<G[]> Species<G>::get_genome() const {

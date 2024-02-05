@@ -1,6 +1,6 @@
-// 					CGP++: Modern C++ Implementation of CGP
+//	CGP++: Modern C++ Implementation of Cartesian Genetic Programming
 // ===============================================================================
-//	File
+//	File MathematicalFunctions.h
 // ===============================================================================
 //
 // ===============================================================================
@@ -8,8 +8,8 @@
 //
 //  Author(s): Anonymous
 //
-//	License:
-// -===============================================================================
+//	License: Academic Free License v. 3.0
+// ================================================================================
 
 
 #ifndef FUNCTIONS_MATHEMATICALFUNCTIONS_H_
@@ -21,7 +21,10 @@
 #include <any>
 #include <sstream>
 
-
+/// @brief Represents a minimalistic mathematical function set. 
+/// @details Ensures that only data type domains such as integer and floats are used
+/// for the template paramter
+/// @tparam E Evation type 
 template<class E>
 class FunctionsMathematical: public Functions<E>  {
 public:

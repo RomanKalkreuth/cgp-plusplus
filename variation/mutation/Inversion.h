@@ -1,6 +1,6 @@
-// 					CGP++: Modern C++ Implementation of CGP
+//	CGP++: Modern C++ Implementation of Cartesian Genetic Programming
 // ===============================================================================
-//	File
+//	File: Inversion.h
 // ===============================================================================
 //
 // ===============================================================================
@@ -8,8 +8,8 @@
 //
 //  Author(s): Anonymous
 //
-//	License:
-// -===============================================================================
+//	License: Academic Free License v. 3.0
+// ================================================================================
 
 #ifndef VARIATION_MUTATION_INVERSION_H_
 #define VARIATION_MUTATION_INVERSION_H_
@@ -18,6 +18,12 @@
 
 #include "Phenotypic.h"
 
+/// @brief Represents the inversion mutation operator that has been proposed for CGP. 
+/// @details Inverses the function genes of a set of function nodes. 
+/// @see Kalkreuth R. (2022): Phenotypic duplication and inversion in cartesian genetic programming applied to boolean function learning
+/// https://doi.org/10.1145/3520304.3529065
+/// @tparam G Genome type 
+/// @tparam F Fitness type
 template<class G, class F>
 class Inversion: public Phenotypic<G, F> {
 public:
@@ -41,6 +47,10 @@ Inversion<G, F>::Inversion(std::shared_ptr<Parameters> p_parameters,
 
 };
 
+/// @brief Mutate an individual by means of inversion.
+/// @details Selects a random start position in the genome and inverts a subsequent
+/// set of function genes of the respective function nodes. 
+/// @param individual CGP individual to mutate
 template<class G, class F>
 void Inversion<G, F>::variate(
 		std::shared_ptr<Individual<G, F>> individual) {

@@ -1,6 +1,6 @@
-// 					CGP++: Modern C++ Implementation of CGP
+//	CGP++: Modern C++ Implementation of Cartesian Genetic Programming
 // ===============================================================================
-//	File
+//	File: DynamicPopulation.h 
 // ===============================================================================
 //
 // ===============================================================================
@@ -8,8 +8,8 @@
 //
 //  Author(s): Anonymous
 //
-//	License:
-// -===============================================================================
+//	License: Academic Free License v. 3.0
+// ================================================================================
 
 #ifndef POPULATION_DYNAMICPOPULATION_H_
 #define POPULATION_DYNAMICPOPULATION_H_
@@ -25,6 +25,10 @@
 #include "../random/Random.h"
 #include "AbstractPopulation.h"
 
+/// @brief Concept for a dynamic class that can vary in size. 
+/// @details Unfinished work and currently not supported
+/// @tparam G Genome Type
+/// @tparam F Fitness Type 
 template <class G, class F>
 class DynamicPopulation : public AbstractPopulation<G,F> {
 private:

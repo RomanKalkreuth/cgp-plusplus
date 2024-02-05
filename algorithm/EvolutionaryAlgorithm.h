@@ -1,13 +1,15 @@
-// 					CGP++: Modern C++ Implementation of CGP
+//	CGP++: Modern C++ Implementation of Cartesian Genetic Programming
 // ===============================================================================
-//	File
+//	File: EvolutionaryAlgorithm.h
 // ===============================================================================
 //
 // ===============================================================================
-//  Copyright (C) 2023
+//  Copyright (C) 2024
 //
-//  Author(s):
-// -===============================================================================
+//  Author(s): Anonymous
+//
+//	License: Academic Free License v. 3.0
+// ================================================================================
 
 #ifndef ALGORITHM_EVOLUTIONARYALGORITHM_H_
 #define ALGORITHM_EVOLUTIONARYALGORITHM_H_
@@ -28,6 +30,17 @@
 #include <cmath>
 #include <mutex>
 
+
+/// @brief Abstract base class to represent an evolutionary algorithm (EA) 
+
+///	@details 
+///	Class will be used to implement various forms of EAs that are provided by CGP++. 
+/// Provides the core functionality for EAs such as evaluation but also checkpointing 
+/// and CGP decoding of the population. 
+
+/// @tparam E Evaluation Type
+/// @tparam G Genotype Type
+/// @tparam F Fitness Type 
 template<class E, class G, class F>
 class EvolutionaryAlgorithm {
 protected:
@@ -91,6 +104,9 @@ public:
 
 };
 
+
+/// @brief Constructor that takes the element needed to run the EA from the composite.  
+/// @param p_composite Pointer to the composite instance. 
 template<class E, class G, class F>
 EvolutionaryAlgorithm<E, G, F>::EvolutionaryAlgorithm(
 		std::shared_ptr<Composite<E, G, F>> p_composite) {
@@ -138,11 +154,9 @@ EvolutionaryAlgorithm<E, G, F>::EvolutionaryAlgorithm(
 	}
 }
 
-template<class E, class G, class F>
-const std::string& EvolutionaryAlgorithm<E, G, F>::get_name() const {
-	return this->name;
-}
 
+/// @brief Triggers the CGP decoding and starts the evaluation 
+/// either in a consecutive or concurrent fashion  
 template<class E, class G, class F>
 void EvolutionaryAlgorithm<E, G, F>::evaluate() {
 
@@ -155,6 +169,7 @@ void EvolutionaryAlgorithm<E, G, F>::evaluate() {
 	}
 }
 
+/// @brief Decodes the individuals of the CGP by calling the decoder of the evaluator 
 template<class E, class G, class F>
 void EvolutionaryAlgorithm<E, G, F>::decode() {
 	std::shared_ptr<Individual<G, F>> individual;
@@ -165,6 +180,10 @@ void EvolutionaryAlgorithm<E, G, F>::decode() {
 	}
 }
 
+/// @brief Evaluates the individuals by using conurrency 
+/// @details A thread pool is created by chunking the population 
+/// and evaluating each chunk in each thread. The thread pool is then
+/// synchronized. 
 template<class E, class G, class F>
 void EvolutionaryAlgorithm<E, G, F>::evaluate_concurrent() {
 
@@ -205,6 +224,7 @@ void EvolutionaryAlgorithm<E, G, F>::evaluate_concurrent() {
 	}
 }
 
+/// @brief Evaluates a chunk of individuals within a thread. 
 template<class E, class G, class F>
 void EvolutionaryAlgorithm<E, G, F>::evaluate_chunk(
 		std::vector<std::shared_ptr<Individual<G, F> > > chunk,
@@ -215,6 +235,7 @@ void EvolutionaryAlgorithm<E, G, F>::evaluate_chunk(
 	}
 }
 
+/// @details Evaluates the population in a consectutive fashion. 
 template<class E, class G, class F>
 void EvolutionaryAlgorithm<E, G, F>::evaluate_consecutive() {
 	std::shared_ptr<Individual<G, F>> individual;
@@ -224,12 +245,15 @@ void EvolutionaryAlgorithm<E, G, F>::evaluate_consecutive() {
 	}
 }
 
+/// @details Resets the number of generation and fitness evaluations. 
 template<class E, class G, class F>
 void EvolutionaryAlgorithm<E, G, F>::reset() {
 	this->generation_number = 1;
 	this->fitness_evaluations = 0;
 }
 
+/// @brief Reports the current status of the EA 
+/// (genration number and best fitness found so far). 
 template<class E, class G, class F>
 void EvolutionaryAlgorithm<E, G, F>::report(int generation_number) {
 
@@ -241,6 +265,7 @@ void EvolutionaryAlgorithm<E, G, F>::report(int generation_number) {
 	}
 }
 
+/// @brief Checks for the predefined ideal fitness.  
 template<class E, class G, class F>
 void EvolutionaryAlgorithm<E, G, F>::check_ideal(int generation_number) {
 	this->is_ideal = this->fitness->is_ideal(this->best_fitness);
@@ -253,6 +278,8 @@ void EvolutionaryAlgorithm<E, G, F>::check_ideal(int generation_number) {
 	}
 }
 
+/// @brief Checks whether a new checkpoing should be triggered. 
+/// @details Checkpoint interval is predefined by a checkpoint modulo. 
 template<class E, class G, class F>
 void EvolutionaryAlgorithm<E, G, F>::check_checkpoint() {
 	if (this->checkpointing) {
@@ -267,14 +294,26 @@ void EvolutionaryAlgorithm<E, G, F>::check_checkpoint() {
 	}
 }
 
+// Getter and setter of EA class
+// ------------------------------------------------------------------------------------------
+
+template<class E, class G, class F>
+const std::string& EvolutionaryAlgorithm<E, G, F>::get_name() const {
+	return this->name;
+}
+
 template<class E, class G, class F>
 int EvolutionaryAlgorithm<E, G, F>::get_generation_number() const {
 	return this->generation_number;
 }
 
+
 template<class E, class G, class F>
 void EvolutionaryAlgorithm<E, G, F>::set_generation_number(int p_generation_number) {
 	generation_number = p_generation_number;
 }
+
+// ------------------------------------------------------------------------------------------
+
 
 #endif /* ALGORITHM_EVOLUTIONARYALGORITHM_H_ */

@@ -1,6 +1,6 @@
-// 					CGP++: Modern C++ Implementation of CGP
+//	CGP++: Modern C++ Implementation of Cartesian Genetic Programming
 // ===============================================================================
-//	File
+//	File: BlackBoxProblem.h 
 // ===============================================================================
 //
 // ===============================================================================
@@ -8,8 +8,8 @@
 //
 //  Author(s): Anonymous
 //
-//	License:
-// -===============================================================================
+//	License: Academic Free License v. 3.0
+// ================================================================================
 
 
 #ifndef PROBLEMS_BLACKBOXPROBLEM_H_
@@ -25,6 +25,11 @@
 
 std::mutex mtx;
 
+/// @brief Base class to represent a black box problem.
+/// @details Provides core functionality for the evaluation of the black box problem. 
+/// @tparam E Evalation type 
+/// @tparam G Genome type 
+/// @tparam F Fitness type
 template<class E, class G, class F>
 class BlackBoxProblem {
 protected:
@@ -74,6 +79,12 @@ public:
 	virtual ~BlackBoxProblem() = default;
 };
 
+/// @brief Constructor that instantiates the vector for the input/output mappings
+///	@details Dimension of the problem is based on the number of considered instances 
+/// @param p_parameters shared pointer to parameter object
+/// @param p_evaluator shared pointer to evaluator object
+/// @param p_constants shared pointer to constants vector
+/// @param p_num_instances number of instances considered by the problem
 template<class E, class G, class F>
 BlackBoxProblem<E, G, F>::BlackBoxProblem(
 		std::shared_ptr<Parameters> p_parameters,
@@ -104,6 +115,13 @@ BlackBoxProblem<E, G, F>::BlackBoxProblem(
 
 }
 
+/// @brief Overloaded constructor that initializes the input/output vectors
+/// @param p_inputs shared pointer to input data vector
+/// @param p_outputs shared pointer to output data vector
+/// @param p_parameters shared pointer to parameter object
+/// @param p_evaluator shared pointer to evaluator object
+/// @param p_constants shared pointer to constants vector
+/// @param p_num_instances number of instances considered by the problem 
 template<class E, class G, class F>
 BlackBoxProblem<E, G, F>::BlackBoxProblem(
 		std::shared_ptr<Parameters> p_parameters,
@@ -140,6 +158,8 @@ BlackBoxProblem<E, G, F>::BlackBoxProblem(
 
 }
 
+/// @brief Copy constructor for deep cloning 
+/// @param problem problem instance to clone
 template<class E, class G, class F>
 BlackBoxProblem<E, G, F>::BlackBoxProblem(const BlackBoxProblem &problem) {
 
@@ -167,6 +187,9 @@ const std::string& BlackBoxProblem<E, G, F>::get_name() const {
 }
 
 
+/// @brief Evaluates an individual against the given input/output matching
+/// @details Iterative evaluation procedure for each instance of the problem.
+/// @param individual individual to evaluate
 template<class E, class G, class F>
 void BlackBoxProblem<E, G, F>::evaluate_individual(
 		std::shared_ptr<Individual<G, F>> individual) {

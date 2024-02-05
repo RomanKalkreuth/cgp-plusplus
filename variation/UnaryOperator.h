@@ -1,6 +1,6 @@
-// 					CGP++: Modern C++ Implementation of CGP
+//	CGP++: Modern C++ Implementation of Cartesian Genetic Programming
 // ===============================================================================
-//	File
+//	File: UnaryOperator.h
 // ===============================================================================
 //
 // ===============================================================================
@@ -8,8 +8,8 @@
 //
 //  Author(s): Anonymous
 //
-//	License:
-// -===============================================================================
+//	License: Academic Free License v. 3.0
+// ================================================================================
 
 #ifndef VARIATION_UNARYOPERATOR_H_
 #define VARIATION_UNARYOPERATOR_H_
@@ -18,6 +18,9 @@
 #include "../representation/Individual.h"
 #include <memory>
 
+/// @brief Abstract base class to represent a unary genetic operator such as mutation. 
+/// @tparam G Genome type 
+/// @tparam F Fitness type
 template <class G, class F>
 class UnaryOperator : public GeneticOperator<G,F> {
 public:
