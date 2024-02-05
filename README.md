@@ -33,25 +33,26 @@ We recommend compiling CGP++ using the G++ compiler with the following command:
 The compiled file can be used with the parameter file in the data/parfile folder and the 
 following command line options.
 
- DATAFILE PARFILE <options> <br />
- -a <value>          search algorithm <br />
- -n <value>          number of function nodes <br />
- -v <value>          number of variables <br />
- -z <value>          number of constants <br />
- -i <value>          number of inputs <br />
- -o <value>          number of outputs <br />
- -f <value>          number of functions <br />
- -r <value>          maximum arity <br />
- -p <value>          mutation rate <br />
- -m <value>          number of parents (mu) <br />
- -l <value>          number of offspring (lambda) <br />
- -e <value>          maximal number of fitness evaluations <br />
- -g <value>          goal (ideal) fitness <br />
- -j <value>          number of jobs <br />
- -s <value>          global seed <br />
- -1 <value>          duplication rate <br />
- -2 <value>          max duplication depth <br />
- -3 <value>          inversion rate <br />
- -4 <value>          max inversion depth <br />
+DATAFILE PARFILE options
+
+ -a  - search algorithm  <br />
+ -n  - number of function nodes  <br />
+ -v  - number of variables  <br />
+ -z  - number of constants  <br />
+ -i  - number of inputs  <br />
+ -o  - number of outputs  <br />
+ -f  - number of functions  <br />
+ -r  - maximum arity  <br />
+ -p  - mutation rate  <br />
+ -m  - number of parents (mu)  <br />
+ -l  - number of offspring (lambda)  <br />
+ -e  - maximal number of fitness evaluations  <br />
+ -g  - goal (ideal) fitness  <br />
+ -j  - number of jobs  <br />
+ -s  - global seed  <br />
+ -1  - duplication rate  <br />
+ -2  - max duplication depth  <br />
+ -3  - inversion rate  <br />
+ -4  - max inversion depth <br />
 
 
