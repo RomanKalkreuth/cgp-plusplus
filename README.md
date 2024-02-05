@@ -35,10 +35,12 @@ A classical makefile is provided in the ```build``` folder. A CMake makefile wil
 
 ### Basic Usage 
 
-The compiled file can be used with the parameter file in the data/parfile folder and the 
+#### Configuration 
+
+The compiled executable can be used with the parameter file in the ```data/parfile``` folder and the 
 following command line options.
 
-- Commandline configuration:
+##### Commandline configuration:
 ```
 DATAFILE PARFILE options
 
@@ -64,7 +66,7 @@ DATAFILE PARFILE options
  -4  - max inversion depth 
 ```
 
-- Parfile configuration:
+##### Parfile configuration:
   
 ```
 algorithm  -  0 = one-plus-lambda, 1 = mu-plus-lambda 
@@ -118,3 +120,8 @@ checkpoint_modulo  -  type: integer
 
 write_statfile 0 = deactivated, 1 = activated
 ```
+
+#### Template Setting 
+
+Template types can be set in the ``template/templates_types.h``` file.  
+
