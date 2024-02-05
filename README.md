@@ -29,7 +29,7 @@ Since CGP++ uses modern techniques of C++, it has to be compiled with a version 
 We recommend compiling CGP++ using the G++ compiler with the following command: 
 > g++ -std=c++17 -O3
 
-### Build 
+#### Build 
 
 A classical makefile is provided in the ```build``` folder. A CMake makefile will be provided soon. 
 
