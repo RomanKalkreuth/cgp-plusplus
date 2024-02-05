@@ -14,9 +14,10 @@ CGP++ also provides a suitable framework that can be used to integrate new sophi
 - Mutation pipelining
 - Crossover support
 - Parameter interfaces for hyperparameter tuning 
-- Benchmark utilities for symbolic regression and logic synthesis
+- Benchmarking utilities
+  - Benchmark generator for symbolic regression
+  - PLU reader for logic synthesis benchmarks
   
-
 ### Requirements
 
 Since CGP++ uses modern techniques of C++, it has to be compiled with a version of GCC that supports the C++17 standard. 
