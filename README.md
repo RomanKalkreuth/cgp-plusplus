@@ -33,6 +33,7 @@ We recommend compiling CGP++ using the G++ compiler with the following command:
 The compiled file can be used with the parameter file in the data/parfile folder and the 
 following command line options.
 
+```
 DATAFILE PARFILE options
 
  -a  - search algorithm  <br />
@@ -54,5 +55,5 @@ DATAFILE PARFILE options
  -2  - max duplication depth  <br />
  -3  - inversion rate  <br />
  -4  - max inversion depth <br />
-
+```
 
