@@ -36,7 +36,7 @@ following command line options.
 ```
 DATAFILE PARFILE options
 
- -a  - search algorithm  <br />
+ -a  - search algorithm: 0 - one-plus-lambda; 1 = mu-plus-lambda <br />
  -n  - number of function nodes  <br />
  -v  - number of variables  <br />
  -z  - number of constants  <br />
