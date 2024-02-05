@@ -17,7 +17,8 @@
 #include "Phenotypic.h"
 
 /// @brief Represents the duplication mutation operator that has been proposed for CGP. 
-/// @details Duplicates function genes among subsequent function nodes. 
+/// @details Duplicates the function gene of a randomly selected active node to a following sequence of active nodes. 
+/// The size of the sequence is determined by chance and in respect to the number of active nodes.
 /// @see Kalkreuth R. (2022): Phenotypic duplication and inversion in cartesian genetic programming applied to boolean function learning
 /// https://doi.org/10.1145/3520304.3529065
 /// @tparam G Genome type 

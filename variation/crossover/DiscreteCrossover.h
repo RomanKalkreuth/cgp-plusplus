@@ -20,9 +20,14 @@
 #include "../BinaryOperator.h"
 
 /// @brief Class for the representation of discrete recombination that has been proposed for CGP. 
-/// @details Adaption of discrete recombination found in numerical optimization. 
+/// @details Adaption of discrete/uniform recombination in CGP. This is a phenotypic variation 
+/// method for discrete recombination in CGP.  It adapts discrete recombination in CGP by means of 
+/// phenotypic functional variation which is performed through the exchange of function genes of active function nodes.
+/// Reasonable results were obtained on several symbolic regression benchmarks (Kalkreuth (2021))
 /// @see Kalkreuth, R. (2022). Towards Discrete Phenotypic Recombination in Cartesian Genetic Programming.
 /// https://doi.org/10.1007/978-3-031-14721-0_5
+/// @see Kalkreuth R. (2022). Reconsideration and extension of Cartesian genetic programming
+/// http://dx.doi.org/10.17877/DE290R-22504
 /// @tparam G Genome type 
 /// @tparam F Fitness type
 template<class G, class F>

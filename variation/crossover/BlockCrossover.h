@@ -19,9 +19,13 @@
 #include "../BinaryOperator.h"
 
 /// @brief Class for the representation of the block crossover that has proposed for CGP. 
-/// @details  blocks of active geneoes between to CGP genotypes.
+/// @details Block crossover swaps blocks of active function genes between two individuals.
+/// The block crossover uses a parameter blockSize which defines the maximum block size.
+/// Reasonable results were obtained on several symbolic regression benchmarks (Kalkreuth (2021)).
 /// @see Husa, J., Kalkreuth, R. (2018). A Comparative Study on Crossover in Cartesian Genetic Programming
 /// https://doi.org/10.1007/978-3-319-77553-1_13
+/// @see Kalkreuth R. (2022). Reconsideration and extension of Cartesian genetic programming
+/// http://dx.doi.org/10.17877/DE290R-22504
 /// @tparam G Genome type 
 /// @tparam F Fitness type
 template<class G, class F>
@@ -113,6 +117,7 @@ void BlockCrossover<G, F>::variate(std::shared_ptr<Individual<G, F>> p1,
 		block_size = this->block_size;
 	}
 
+	//
 	std::shared_ptr<std::vector<int>> active_nodes1 = p1->get_active_nodes();
 	std::shared_ptr<std::vector<int>> active_nodes2 = p2->get_active_nodes();
 

@@ -19,7 +19,8 @@
 #include "Phenotypic.h"
 
 /// @brief Represents the inversion mutation operator that has been proposed for CGP. 
-/// @details Inverses the function genes of a set of function nodes. 
+/// @details Inverts the order of function genes of a randomly selected set of active nodes. The size of the set 
+/// is determined by chance and in respect to the number of active nodes.
 /// @see Kalkreuth R. (2022): Phenotypic duplication and inversion in cartesian genetic programming applied to boolean function learning
 /// https://doi.org/10.1145/3520304.3529065
 /// @tparam G Genome type 
