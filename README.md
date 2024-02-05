@@ -50,7 +50,8 @@ DATAFILE PARFILE options
  -o  - number of outputs 
  -f  - number of functions 
  -r  - maximum arity
- -p  - mutation rate 
+ -p  - mutation rate
+ -c  - crossover rate 
  -m  - number of parents (mu) 
  -l  - number of offspring (lambda) 
  -e  - maximal number of fitness evaluations
