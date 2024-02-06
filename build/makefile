@@ -66,7 +66,7 @@ main-build: cartesian-genetic-programming
 cartesian-genetic-programming: $(OBJS) $(USER_OBJS) makefile $(OPTIONAL_TOOL_DEPS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: GCC C++ Linker'
-	g++  -o "cgp" $(OBJS) $(USER_OBJS) $(LIBS)
+	g++  -o "cartesian-genetic-programming" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 

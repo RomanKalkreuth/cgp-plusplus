@@ -6,11 +6,9 @@
 // ===============================================================================
 //  Copyright (C) 2024
 //
-//  Author(s): Anonymous
 //
 //	License: Academic Free License v. 3.0
 // ================================================================================
-
 
 
 #ifndef VARIATION_SINGLEACTIVEGENEMUTATION_H_
