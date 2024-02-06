@@ -19,26 +19,34 @@
 #include <fstream>
 #include <string>
 #include <filesystem>
+#include <stdexcept>
 
 #include "template/template_types.h"
+#include "validation/Validation.h"
 #include "evolver/Evolver.h"
 #include "initializer/SymbolicRegressionInitializer.h"
-
-#include "benchmark/symbolic_regression/DatasetGenerator.h"
-#include "benchmark/symbolic_regression/ObjectiveFunctions.h"
+#include "initializer/LogicSynthesisInitializer.h"
+#include "initializer/BlackBoxInitializer.h"
 #include "random/Random.h"
 
+typedef unsigned int PROBLEM_TYPE;
+
 void usage(const char *self) {
-	std::cout << "usage: DATAFILE PARFILE <options>" << std::endl;
-	std::cout << "-a <value>          algorithm" << std::endl;
+	std::cout << "usage: DATAFILE PARFILE [opt]CHECKPOINTFILE <options>"
+			<< std::endl;
+	std::cout
+			<< "-a <value>          search algorithm: 0 - one-plus-lambda; 1 = mu-plus-lambda"
+			<< std::endl;
+	std::cout << "-b <value>          levels back" << std::endl;
 	std::cout << "-n <value>          number of function nodes" << std::endl;
 	std::cout << "-v <value>          number of variables" << std::endl;
 	std::cout << "-z <value>          number of constants" << std::endl;
-	std::cout << "-i <value>          number of inputs" << std::endl;
+	std::cout << "-i <value>          number of inputs [opt]" << std::endl;
 	std::cout << "-o <value>          number of outputs" << std::endl;
 	std::cout << "-f <value>          number of functions" << std::endl;
 	std::cout << "-r <value>          maximum arity" << std::endl;
 	std::cout << "-p <value>          mutation rate" << std::endl;
+	std::cout << "-c <value>          crossover rate" << std::endl;
 	std::cout << "-m <value>          number of parents (mu)" << std::endl;
 	std::cout << "-l <value>          number of offspring (lambda)"
 			<< std::endl;
@@ -59,17 +67,14 @@ int main(int argcc, char **argvv, char **envp) {
 	if (argcc < 3)
 		usage(*argvv);
 
+	const PROBLEM LOGIC_SYNTHESIS = 0;
+	const PROBLEM SYMBOLIC_REGRESSION = 1;
+
 	std::string data_file = argvv[1];
 	std::string param_file = argvv[2];
 
 	std::string checkpoint_file;
-
-	if (argvv[3]) {
-		std::string s = argvv[3];
-		if (s.find(".checkpoint") != std::string::npos) {
-			checkpoint_file = s;
-		}
-	}
+	std::string s;
 
 	int num_nodes = -1;
 	int num_inputs = -1;
@@ -101,6 +106,25 @@ int main(int argcc, char **argvv, char **envp) {
 	long long global_seed = -1;
 
 	FITNESS_TYPE ideal_fitness = -1;
+
+	int problem_type;
+
+	s = argvv[1];
+
+	if (s.find(".plu") != std::string::npos) {
+		problem_type = LOGIC_SYNTHESIS;
+	} else if (s.find(".dat") != std::string::npos) {
+		problem_type = SYMBOLIC_REGRESSION;
+	} else {
+		throw std::invalid_argument("Datatype is not supported!");
+	}
+
+	if (argvv[3]) {
+		s = argvv[3];
+		if (s.find(".checkpoint") != std::string::npos) {
+			checkpoint_file = s;
+		}
+	}
 
 	char opt;
 	while ((opt = getopt(argcc, argvv,
@@ -199,10 +223,27 @@ int main(int argcc, char **argvv, char **envp) {
 	}
 
 	std::shared_ptr<
-			SymbolicRegressionInitializer<EVALUATION_TYPE, GENOME_TYPE,
-					FITNESS_TYPE>> initializer = std::make_shared<
-			SymbolicRegressionInitializer<EVALUATION_TYPE, GENOME_TYPE,
-					FITNESS_TYPE>>(data_file);
+			BlackBoxInitializer<EVALUATION_TYPE, GENOME_TYPE, FITNESS_TYPE>> initializer;
+
+	if (problem_type == LOGIC_SYNTHESIS) {
+		if constexpr (Validation::validate_ls_type()) {
+			initializer = std::make_shared<
+					LogicSynthesisInitializer<EVALUATION_TYPE, GENOME_TYPE,
+							FITNESS_TYPE>>(data_file);
+		} else {
+			throw std::invalid_argument(
+					"Evaluation type is not supported for logic synthesis!");
+		}
+	} else if (problem_type == SYMBOLIC_REGRESSION) {
+		if constexpr (Validation::validate_sr_type()) {
+			initializer = std::make_shared<
+					SymbolicRegressionInitializer<EVALUATION_TYPE, GENOME_TYPE,
+							FITNESS_TYPE>>(data_file);
+		} else {
+			throw std::invalid_argument(
+					"Evaluation type is not supported for symbolic regression!");
+		}
+	}
 
 	initializer->init_parfile_parameters(param_file);
 
@@ -221,18 +262,16 @@ int main(int argcc, char **argvv, char **envp) {
 	initializer->init_checkpoint();
 	initializer->init_algorithm();
 
-	if(checkpoint_file != "")
+	if (checkpoint_file != "")
 		initializer->init_checkpoint_file(checkpoint_file);
-
 
 	std::shared_ptr<Evolver<EVALUATION_TYPE, GENOME_TYPE, FITNESS_TYPE>> evolver =
 			std::make_shared<Evolver<EVALUATION_TYPE, GENOME_TYPE, FITNESS_TYPE>>(
 					initializer);
 
-	if(checkpoint_file == "") {
+	if (checkpoint_file == "") {
 		evolver->run();
-	}
-	else {
+	} else {
 		evolver->resume(checkpoint_file);
 	}
 }

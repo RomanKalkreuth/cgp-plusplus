@@ -61,6 +61,7 @@ OnePlusLambda<E, G, F>::OnePlusLambda(
 		std::shared_ptr<Composite<E, G, F>> p_composite) :
 		EvolutionaryAlgorithm<E, G, F>(p_composite) {
 
+	this->name = "one-plus-lambda";
 	lambda = this->parameters->get_lambda();
 	this->parameters->set_population_size(1 + lambda);
 	neutral_genetic_drift = this->parameters->is_neutral_genetic_drift();

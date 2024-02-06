@@ -21,7 +21,7 @@
 /// @brief Represents an ERC (Ephemeral Random Constant) as used in GP.
 class ERC {
 public:
-	ERC();
+	ERC() = delete;
 
 	// Defines the different types of ERC
 	static const ERC_TYPE KOZA = 0;

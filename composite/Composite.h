@@ -147,6 +147,8 @@ void Composite<E, G, F>::init() {
 
 template<class E, class G, class F>
 void Composite<E, G, F>::print_constants() {
+	if(this->parameters->get_num_constants() == 0)
+		return;
 	std::cout<<"Constants: ";
 	int i=1;
 	for(auto it : *this->constants.get()) {
@@ -172,14 +174,15 @@ void Composite<E, G, F>::print_functions() {
 
 template<class E, class G, class F>
 void Composite<E, G, F>::print_operators() {
-	this->recombination->print();
+	if(this->parameters->get_crossover_rate() > 0.0)
+		this->recombination->print();
 	this->mutation->print();
 	std::cout<<std::endl;
 }
 
 
-// Getters and Setters of the composite class 
-
+// Getters and setters of composite class
+//------------------------------------------------------------------------------------------------
 template<class E, class G, class F>
 const std::shared_ptr<Evaluator<E, G, F> >& Composite<E, G, F>::get_evaluator() const {
 	return evaluator;
@@ -304,5 +307,6 @@ template<class E, class G, class F>
 void Composite<E, G, F>::set_constants(const std::shared_ptr<std::vector<E> > &p_constants) {
 	this->constants = p_constants;
 }
+//------------------------------------------------------------------------------------------------
 
 #endif /* COMPOSITE_COMPOSITE_H_ */

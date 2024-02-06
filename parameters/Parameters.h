@@ -18,6 +18,7 @@ typedef unsigned int EVAL_METHOD;
 typedef unsigned int MUTATION_TYPE;
 typedef unsigned int CROSSOVER_TYPE;
 typedef unsigned int ALGORITHM;
+typedef unsigned int PROBLEM;
 
 #include <stdexcept>
 #include <iostream>
@@ -47,6 +48,9 @@ public:
 
 	const ALGORITHM ONE_PLUS_LAMBDA = 0;
 	const ALGORITHM MU_PLUS_LAMBDA = 1;
+
+	const PROBLEM SYMBOLIC_REGRESSION = 0;
+	const PROBLEM LOGIC_SYNTHESIS = 1;
 
 	const std::string STAT_FILE_DIR = "data/statfiles/";
 	const std::string CHECKPOINT_FILE_DIR = "data/checkpoints/";
@@ -83,6 +87,7 @@ private:
 	CROSSOVER_TYPE crossover_type;
 
 	ALGORITHM algorithm;
+	PROBLEM problem;
 
 	std::shared_ptr<std::vector<MUTATION_TYPE>> mutation_operators;
 
@@ -249,13 +254,17 @@ public:
 
 	float get_inversion_rate() const;
 	void set_inversion_rate(float p_inversion_rate);
+
 	float get_duplication_rate() const;
 	void set_duplication_rate(float p_duplication_rate);
+
 	int get_max_inversion_depth() const;
 	void set_max_inversion_depth(int p_max_inversion_depth);
+
 	int get_max_duplication_depth() const;
 	void set_max_duplication_depth(int p_max_duplication_depth);
-
+	PROBLEM get_problem() const;
+	void set_problem(PROBLEM problem);
 };
 
 #endif /* PARAMETERS_PARAMETERS_H_ */

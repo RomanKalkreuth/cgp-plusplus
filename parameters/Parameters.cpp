@@ -518,4 +518,12 @@ bool Parameters::is_checkpointing() const {
 void Parameters::set_checkpointing(bool p_checkpointing) {
 	this->checkpointing = p_checkpointing;
 }
+
+PROBLEM Parameters::get_problem() const {
+	return problem;
+}
+
+void Parameters::set_problem(PROBLEM problem) {
+	this->problem = problem;
+}
 // ------------------------------------------------------------------------------------------

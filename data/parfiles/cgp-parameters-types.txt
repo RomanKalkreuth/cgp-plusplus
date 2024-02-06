@@ -1,0 +1,50 @@
+algorithm                        -  0 = one-plus-lambda, 1 = mu-plus-lambda 
+levels_back                      -  type: integer
+
+num_jobs                         -  type: integer 
+num_function_nodes               -  type: integer 
+num_variables                    -  type: integer
+num_constants                    -  type: integer
+constant_type                    -  0 = Koza 
+num_outputs                      -  type: integer 
+num_functions                    -  type: integer 
+max_arity                        -  type: integer 
+
+num_parents                      -  type: integer 
+num_offspring                    -  type: integer
+
+max_fitness_evaluations          -  type: integer  
+ideal_fitness                    -  type: generic 
+minimizing_fitness               -  0 = false, 1 = true 
+
+crossover_type                   -  0 = block, 1 = discrete 
+crossover_rate                   -  type: float,  range: [0.0, 1.0]
+
+probabilistic_point_mutation     -  0 = deactivated, 1 = activated
+single_active_gene_mutation      -  0 = deactivated, 1 = activated
+inversion_mutation               -  0 = deactivated, 1 = activated
+duplication_mutation             -  0 = deactivated, 1 = activated
+point_mutation_rate              -  type: float,  range: [0.0, 1.0]
+duplication_rate                 -  type: float,  range: [0.0, 1.0]
+inversion_rate                   -  type: float,  range: [0.0, 1.0]  
+max_duplication_depth            -  type: integer
+max_inversion_depth              -  type: integer
+
+neutral_genetic_drift            -  0 = deactivated, 1 = activated
+simple_report_type               -  0 = deactivated, 1 = activated
+print_configuration              -  0 = deactivated, 1 = activated  
+evaluate_expression              -  0 = deactivated, 1 = activated
+
+num_eval_threads                 -  type: integer   
+generate_random_seed             -  0 = deactivated, 1 = activated
+global_seed                      -  type: long long
+
+report_during_job                -  0 = deactivated, 1 = activated
+report_after_job                 -  0 = deactivated, 1 = activated
+report_simple                    -  0 = deactivated, 1 = activated
+report_interval	                 -  0 = deactivated, 1 = activated
+
+checkpointing                    -  0 = deactivated, 1 = activated
+checkpoint_modulo                -  type: integer
+
+write_statfile                   -  0 = deactivated, 1 = activated

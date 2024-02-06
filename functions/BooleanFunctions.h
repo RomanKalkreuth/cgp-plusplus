@@ -18,7 +18,6 @@
 #include "../parameters/Parameters.h"
 
 #include <string>
-#include <any>
 #include <sstream>
 
 /// @brief Class to represent a function set of Boolean functions 
