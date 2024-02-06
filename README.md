@@ -45,7 +45,7 @@ following command line options.
 
 ##### Commandline configuration:
 ```
-usage: DATAFILE PARFILE CHECKPOINTFILE (opt) options
+usage: DATAFILE PARFILE CHECKPOINTFILE <options>
 
  -a  - search algorithm: 0 = one-plus-lambda; 1 = mu-plus-lambda 
  -n  - number of function nodes  
