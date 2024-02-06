@@ -133,6 +133,55 @@ Template types can be set in the ```template/templates_types.h``` file.
 A corresponding paper that describes CGP++ in more detail is currently under review. The CGP++ team also works tirelessly
 on a tutorial which will be released soon. 
 
+### Exemplary Program Output
+
+A program output could be, for example, the overview of the configuration of the parameters and the metrics of the respective instances 
+such as number of fitness evaluations, best fitness and runtime.  
+
+```
+		CGP++ CONFIGURATION
+-------------------------------------------------
+Number of function nodes: 10
+Levels back: 10
+
+Number of functions: 4
+Maximum arity: 2
+
+Number of variables: 1
+Number of constants: 1
+
+Number of inputs: 2
+Number of outputs: 1
+
+Crossover rate: 0.5
+Mutation rate: 0.1
+
+Number of parents (mu): 4
+Number of offspring (lambda): 8
+
+Ideal fitness value: 0.01
+
+Number of jobs: 100
+Maximum number of fitness evaluations: 1000000000
+Maximum number of generations: 125000000
+
+Global seed: 1707214445176910306
+
+Functions: [1] ADD  [2] SUB  [3] MUL  [4] DIV  
+Constants: [1] -0.416173  
+
+Recombination: Discrete Crossover
+Mutation: [1] Probabilistic Point  [2] Inversion  [3] Duplication  
+
+Algorithm: mu-plus-lambda
+-------------------------------------------------
+
+Job # 1 :: Evaluations: 1980264 :: Best Fitness: 2.08206e-05 :: Runtime (s): 40.5062
+Job # 2 :: Evaluations: 167528 :: Best Fitness: 2.11298e-05 :: Runtime (s): 2.47478
+Job # 3 :: Evaluations: 113000 :: Best Fitness: 2.10702e-05 :: Runtime (s): 2.098
+Job # 4 :: Evaluations: 49800 :: Best Fitness: 2.11298e-05 :: Runtime (s): 0.590241
+Job # 5 :: Evaluations: 8832 :: Best Fitness: 2.08057e-05 :: Runtime (s): 0.128364
+```
 
 ### Acknowledgement
 
