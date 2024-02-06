@@ -182,6 +182,8 @@ Job # 3 :: Evaluations: 113000 :: Best Fitness: 2.10702e-05 :: Runtime (s): 2.09
 Job # 4 :: Evaluations: 49800 :: Best Fitness: 2.11298e-05 :: Runtime (s): 0.590241
 Job # 5 :: Evaluations: 8832 :: Best Fitness: 2.08057e-05 :: Runtime (s): 0.128364
 ```
+### License 
+CGP++ is free open-source with a BSD-style academic license (AFL 3.0).
 
 ### Acknowledgement
 
