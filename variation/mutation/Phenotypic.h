@@ -32,23 +32,23 @@ public:
 
 	void variate(std::shared_ptr<Individual<G, F>> individual) = 0;
 
-	int start_index(int num_active_function_nodes, int depth);
-	int stochastic_depth(int max_depth, int num_active_function_nodes);
+	int start_index(int num_active_nodes, int depth);
+	int stochastic_depth(int max_depth, int num_active_nodes);
 };
 
 /// @brief Determines a start position for the mutation within the genome by chance. 
-/// @param num_active_function_nodes number of active function nodes
+/// @param num_active_nodes number of active function nodes
 /// @param depth mutation depth, number of function genes that will be considered
 /// @return start position in the genome 
 template<class G, class F>
-int Phenotypic<G,F>::start_index(int num_active_function_nodes, int depth) {
-		int start_max = num_active_function_nodes - depth;
+int Phenotypic<G,F>::start_index(int num_active_nodes, int depth) {
+		int start_max = num_active_nodes - depth;
 		int start;
 
 		if (start_max <= 0) {
 			start = 0;
 		} else {
-			start  = this->random->random_integer(0, start_max);
+			start  = this->random->random_integer(0, start_max - 1);
 		}
 
 		return start;
@@ -56,15 +56,15 @@ int Phenotypic<G,F>::start_index(int num_active_function_nodes, int depth) {
 
 /// @brief Determnes the depth of the mutation by chance
 /// @param max_depth maximum depth of the mutation
-/// @param num_active_function_nodes number of active function nodes
+/// @param num_active_nodes number of active function nodes
 /// @return mutation depth
 template<class G, class F>
-int Phenotypic<G,F>::stochastic_depth(int max_depth, int num_active_function_nodes) {
+int Phenotypic<G,F>::stochastic_depth(int max_depth, int num_active_nodes) {
 	int depth;
 	int max;
 
-	if (num_active_function_nodes <= max_depth) {
-		max = num_active_function_nodes - 1;
+	if (num_active_nodes <= max_depth) {
+		max = num_active_nodes - 1;
 	} else {
 		max = max_depth;
 	}

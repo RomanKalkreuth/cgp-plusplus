@@ -56,12 +56,15 @@ template<class G, class F>
 void Inversion<G, F>::variate(
 		std::shared_ptr<Individual<G, F>> individual) {
 
-	int num_active_function_nodes =  individual->num_active_nodes();
+	int num_active_nodes =  individual->num_active_nodes();
 
-	if (num_active_function_nodes <= 1) {
+	// We need at least two active function nodes
+	if (num_active_nodes <= 1) {
 			return;
 	}
 
+	int depth;
+	int start;
 	int end;
 	int left_node;
 	int left_position;
@@ -75,12 +78,16 @@ void Inversion<G, F>::variate(
 
 	std::shared_ptr<G[]> genome = individual->get_genome();
 
-	int depth = this->stochastic_depth(this->max_depth, num_active_function_nodes);
-	int start = this->start_index(num_active_function_nodes,depth);
+	// Determine a valid inversion depth by chance and get a suitable start index
+	depth = this->stochastic_depth(this->max_depth, num_active_nodes);
+	start = this->start_index(num_active_nodes, depth);
 
+	// Calculate end point and middle for the set of nodes which will be mutated
 	end = start + depth;
 	middle = round(depth / 2.0);
 
+	// Perform the inversion by iterating until the middle is reached and pairwise exchanging
+	// the function genes
 	for (int i = 0; i < middle; i++) {
 		left_node = active_nodes->at(start + i);
 		right_node = active_nodes->at(end - i);

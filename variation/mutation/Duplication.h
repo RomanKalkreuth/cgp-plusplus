@@ -54,12 +54,15 @@ template<class G, class F>
 void Duplication<G, F>::variate(
 		std::shared_ptr<Individual<G, F>> individual) {
 
-	int num_active_function_nodes = individual->num_active_nodes();
+	int num_active_nodes = individual->num_active_nodes();
 
-	if (num_active_function_nodes <= 1) {
+	// We need at least two active function nodes
+	if (num_active_nodes <= 1) {
 		return;
 	}
 
+	int depth;
+	int start;
 	int end;
 	int position;
 	int node;
@@ -68,16 +71,23 @@ void Duplication<G, F>::variate(
 	std::shared_ptr<std::vector<int>> active_nodes = individual->get_active_nodes();
 	std::shared_ptr<G[]> genome = individual->get_genome();
 
-	int depth = this->stochastic_depth(this->max_depth,
-			num_active_function_nodes);
-	int start = this->start_index(num_active_function_nodes, depth);
+	// Determine a valid inversion depth by chance and get a suitable start index
+	depth = this->stochastic_depth(this->max_depth,
+			num_active_nodes);
+	start = this->start_index(num_active_nodes, depth);
 
 	end = start + depth;
+
+	// Get the node number with respect to the determined start index
 	node = active_nodes->at(start);
 
+	// Get the position of the function gene
 	position = this->species->position_from_node_number(node);
+
+	// Get the function gene value
 	function = genome[position];
 
+	// Finally duplicate the gene with the respective depth
 	for (int i = start + 1; i <= end; i++) {
 		node = active_nodes->at(i);
 		position = this->species->position_from_node_number(node);

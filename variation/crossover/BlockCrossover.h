@@ -24,7 +24,7 @@
 /// Reasonable results were obtained on several symbolic regression benchmarks (Kalkreuth (2021)).
 /// @see Husa, J., Kalkreuth, R. (2018). A Comparative Study on Crossover in Cartesian Genetic Programming
 /// https://doi.org/10.1007/978-3-319-77553-1_13
-/// @see Kalkreuth R. (2022). Reconsideration and extension of Cartesian genetic programming
+/// @see Kalkreuth R. (2021). Reconsideration and extension of Cartesian genetic programming
 /// http://dx.doi.org/10.17877/DE290R-22504
 /// @tparam G Genome type 
 /// @tparam F Fitness type
