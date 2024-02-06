@@ -133,3 +133,12 @@ Template types can be set in the ```template/templates_types.h``` file.
 A corresponding paper that describes CGP++ in more detail is currently under review. The CGP++ team also works tirelessly
 on a tutorial which will be released soon. 
 
+
+### Acknowledgement
+
+CGP++ is dedicated to Dr. Julian Francis Miller (1955 - 2022), who as
+the founder of Cartesian Genetic Programming devoted a large part
+of his scientific life to its proposal, development and analysis. With
+the introduction of CGP++ we pay tribute to Julian’s pioneering
+effort in the field of graph-based GP and acknowledge his lifework.
+
