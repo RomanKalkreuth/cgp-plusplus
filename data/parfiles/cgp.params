@@ -22,8 +22,8 @@ crossover_rate 0.5
 mutation_type 0
 probabilistic_point_mutation 1
 single_active_gene_mutation 0
-inversion_mutation 1
-duplication_mutation 1
+inversion_mutation 0
+duplication_mutation 0
 point_mutation_rate 0.001	
 duplication_rate 0.05
 inversion_rate 0.05
