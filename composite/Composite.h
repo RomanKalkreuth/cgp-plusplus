@@ -144,6 +144,8 @@ void Composite<E, G, F>::init() {
 
 }
 
+/// @brief Prints out the constants
+/// @details Only in case that constants exists
 template<class E, class G, class F>
 void Composite<E, G, F>::print_constants() {
 	if(this->parameters->get_num_constants() == 0)
@@ -157,6 +159,7 @@ void Composite<E, G, F>::print_constants() {
 	std::cout<<std::endl;
 }
 
+/// @brief Prints out the fucntion set
 template<class E, class G, class F>
 void Composite<E, G, F>::print_functions() {
 	std::string function_name;
@@ -171,6 +174,9 @@ void Composite<E, G, F>::print_functions() {
 	std::cout<<std::endl;
 }
 
+/// @brief Prints out the variation operators
+/// @details Crossover operator is only printed
+/// when its recombination is used
 template<class E, class G, class F>
 void Composite<E, G, F>::print_operators() {
 	if(this->parameters->get_crossover_rate() > 0.0)

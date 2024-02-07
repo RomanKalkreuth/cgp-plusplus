@@ -223,6 +223,12 @@ void Initializer<E, G, F>::init_parfile_parameters(std::string parfile_path) {
 	} else {
 		throw std::runtime_error("Error opening PAR file!");
 	}
+
+	if (this->parameters->get_num_parents() >= 0 && this->parameters->get_num_offspring() >= 0) {
+		this->parameters->set_population_size(this->parameters->get_num_parents()
+				+ this->parameters->get_num_offspring());
+	}
+
 }
 
 /// @brief Initializes the commandline parameters that have been read in the main function. 
@@ -237,29 +243,70 @@ void Initializer<E, G, F>::init_comandline_parameters(int p_algorithm,
 		int p_max_duplication_depth, float p_inversion_rate,
 		int p_max_inversion_depth, float p_crossover_rate, int p_levels_back) {
 
-	this->parameters->set_num_function_nodes(p_num_nodes);
-	this->parameters->set_num_variables(p_num_variables);
-	this->parameters->set_num_constants(p_num_constants);
-	this->parameters->set_num_outputs(p_num_outputs);
-	this->parameters->set_num_functions(p_num_functions);
-	this->parameters->set_max_arity(p_max_arity);
+	if (p_num_nodes >= 0) {
+		this->parameters->set_num_function_nodes(p_num_nodes);
+	}
 
-	this->parameters->set_num_parents(p_num_parents);
-	this->parameters->set_num_offspring(p_num_offspring);
-	this->parameters->set_mutation_rate(p_mutation_rate);
-	this->parameters->set_crossover_rate(p_crossover_rate);
+	if (p_num_variables >= 0) {
+		this->parameters->set_num_variables(p_num_variables);
+	}
 
-	this->parameters->set_levels_back(p_levels_back);
-	this->parameters->set_algorithm(p_algorithm);
+	if (p_num_constants >= 0) {
+		this->parameters->set_num_constants(p_num_constants);
+	}
 
-	this->parameters->set_max_fitness_evaluations(p_max_fitness_evaluations);
-	this->parameters->set_ideal_fitness(p_ideal_fitness);
-	this->parameters->set_num_jobs(p_num_jobs);
+	if (p_num_outputs >= 0) {
+		this->parameters->set_num_outputs(p_num_outputs);
+	}
 
-	this->parameters->set_genome_size();
-	this->parameters->set_population_size(p_num_parents + p_num_offspring);
-	this->parameters->set_global_seed(p_global_seed);
-	this->parameters->set_eval_chunk_size();
+	if (p_num_functions >= 0) {
+		this->parameters->set_num_functions(p_num_functions);
+	}
+
+	if (p_max_arity >= 0) {
+		this->parameters->set_max_arity(p_max_arity);
+	}
+
+	if (p_num_parents >= 0) {
+		this->parameters->set_num_parents(p_num_parents);
+	}
+
+	if (p_num_offspring >= 0) {
+		this->parameters->set_num_offspring(p_num_offspring);
+	}
+
+	if (p_mutation_rate >= 0) {
+		this->parameters->set_mutation_rate(p_mutation_rate);
+	}
+
+	if (p_crossover_rate >= 0) {
+		this->parameters->set_crossover_rate(p_crossover_rate);
+	}
+
+	if (p_levels_back >= 0) {
+		this->parameters->set_levels_back(p_levels_back);
+	}
+
+	if (p_algorithm >= 0) {
+		this->parameters->set_algorithm(p_algorithm);
+	}
+
+	if (p_max_fitness_evaluations >= 0) {
+		this->parameters->set_max_fitness_evaluations(
+				p_max_fitness_evaluations);
+	}
+
+	if (p_ideal_fitness >= 0) {
+		this->parameters->set_ideal_fitness(p_ideal_fitness);
+	}
+
+	if (p_num_jobs >= 0) {
+		this->parameters->set_num_jobs(p_num_jobs);
+	}
+
+	if (p_global_seed >= 0) {
+		this->parameters->set_global_seed(p_global_seed);
+	}
 
 	if (p_duplication_rate >= 0) {
 		this->parameters->set_duplication_rate(p_duplication_rate);
@@ -276,6 +323,13 @@ void Initializer<E, G, F>::init_comandline_parameters(int p_algorithm,
 	if (p_max_inversion_depth > 0) {
 		this->parameters->set_max_inversion_depth(p_max_inversion_depth);
 	}
+
+	if (p_num_parents >= 0 && p_num_offspring >= 0) {
+		this->parameters->set_population_size(p_num_parents + p_num_offspring);
+	}
+
+	this->parameters->set_genome_size();
+	this->parameters->set_eval_chunk_size();
 
 }
 
