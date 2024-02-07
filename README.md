@@ -126,6 +126,12 @@ checkpoint_modulo                -  type: integer
 write_statfile                   -  0 = deactivated, 1 = activated
 ```
 
+#### Example 
+
+The following call to cgp++ triggers the synthesis of an Boolean expression for a 1-Bit digital adder using a 1+1 ES as search algorithm:
+
+```./cgp data/plufiles/add1c.plu data/parfiles/cgp.params -a 0 -b 100 -n 100 -v 1 -z 0 -o 1 -f 4 -r 2  -m 1 -l 1 -p 0.01 -c 0.0 -e 1000000 -j 10 -g 0  -s 42```
+
 #### Template Settings 
 
 Template types can be set in the ```template/templates_types.h``` file.  
