@@ -43,7 +43,7 @@ A CMake file to create cross-compiled binaries is underway.
 
 The compiled executable can be used with the parameter file in the ```data/parfile``` folder and the 
 following commandline options. The data file, .plu file for logic synthesis and .dat file for symbolic regression, are
-located in the ``data/``` folder. The data and parameter file are passed to CGP via commandline. Optionally, a checkpoint file
+located in the ```data/``` folder. The data and parameter file are passed to CGP via commandline. Optionally, a checkpoint file
 can be passed to CGP this way. The CGP and run specific options can be the passed to CGP via the commandline and parameterfile configuration. 
 
 ##### Commandline configuration:
