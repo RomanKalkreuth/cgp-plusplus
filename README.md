@@ -136,7 +136,7 @@ and a simple CGP with 10 function nodes and point mutation:
 
 Template settings: 
 ```
-typedef int  EVALUATION_TYPE;
+typedef int EVALUATION_TYPE;
 typedef int GENOME_TYPE;
 typedef int FITNESS_TYPE;
 ```
