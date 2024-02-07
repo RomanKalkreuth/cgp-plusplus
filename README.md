@@ -36,12 +36,14 @@ A classical makefile is provided in the ```build``` folder. The command ```make 
 
 A CMake file to create cross-compiled binaries is underway. 
 
-### Basic Usage 
+### Basic Usage
 
 #### Configuration 
 
 The compiled executable can be used with the parameter file in the ```data/parfile``` folder and the 
-following command line options.
+following commandline options. The data file, .plu file for logic synthesis and .dat file for symbolic regression, are
+located in the ``data/``` folder. The data and parameter file are passed to CGP via commandline. Optionally, a checkpoint file
+can be passed to CGP this way. The CGP and run specific options can be the passed to CGP via the commandline and parameterfile configuration. 
 
 ##### Commandline configuration:
 ```
@@ -123,6 +125,12 @@ checkpoint_modulo                -  type: integer
 
 write_statfile                   -  0 = deactivated, 1 = activated
 ```
+
+#### Example 
+
+The following call to CGP++ triggers the synthesis of a Boolean expression for a simple 1-Bit digital adder by using a 1+1 ES as search algorithm:
+
+```./cgp data/plufiles/add1c.plu data/parfiles/cgp.params -a 0 -b 100 -n 100 -v 1 -z 0 -o 1 -f 4 -r 2  -m 1 -l 1 -p 0.01 -c 0.0 -e 1000000 -j 10 -g 0  -s 42```
 
 #### Template Settings 
 
