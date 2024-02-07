@@ -18,6 +18,7 @@
 #include <filesystem>
 #include <chrono>
 #include <cstdlib>
+#include <iostream>
 
 #include "../algorithm/EvolutionaryAlgorithm.h"
 #include "../parameters/Parameters.h"
@@ -130,6 +131,7 @@ int Checkpoint<E, G, F>::load(
 
 	double global_seed;
 	int generation_number;
+	double constant;
 
 	std::shared_ptr<std::vector<std::vector<std::string>>> genomes =
 			std::make_shared<std::vector<std::vector<std::string>>>();
@@ -146,7 +148,13 @@ int Checkpoint<E, G, F>::load(
 				std::vector<std::string> genome = this->split_genome(value);
 				genomes->push_back(genome);
 			} else if (parameter == "constant") {
-				double constant = std::stod(value);
+				try {
+					constant = std::stod(value);
+				} catch (const std::invalid_argument &e) {
+					std::cerr
+							<< "Constant type is invalid and can't be read by the checkpointer."
+					<<std::endl;
+				}
 				constants->push_back(constant);
 			}
 		}
@@ -167,7 +175,7 @@ int Checkpoint<E, G, F>::load(
 template<class E, class G, class F>
 std::vector<std::string> Checkpoint<E, G, F>::split_genome(string genome_str) {
 	std::vector<string> vec;
-	int pos = 0;
+	unsigned int pos = 0;
 	while (pos <= genome_str.size()) {
 		pos = genome_str.find(",");
 		vec.push_back(genome_str.substr(0, pos));

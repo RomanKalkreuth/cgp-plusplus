@@ -35,7 +35,7 @@
 
 /// @brief Initializer class for CGP++ that sets up central elements requred to set 
 /// up a run 
-/// @details Used to initialize elements such as composite, algorithm, constants, \
+/// @details Used to initialize elements such as composite, algorithm, constants,
 /// checkpointer, problem and functions. The objects are instantiated with the make_shared function
 /// to wrap them as shared pointers 
 /// @tparam E Evaluation Type
@@ -73,6 +73,7 @@ public:
 			int p_levels_back);
 
 	void init_parfile_parameters(std::string parfile_path);
+	void finalize_parameter_configuration();
 	void init_composite();
 	void init_erc();
 	void init_algorithm();
@@ -224,11 +225,6 @@ void Initializer<E, G, F>::init_parfile_parameters(std::string parfile_path) {
 		throw std::runtime_error("Error opening PAR file!");
 	}
 
-	if (this->parameters->get_num_parents() >= 0 && this->parameters->get_num_offspring() >= 0) {
-		this->parameters->set_population_size(this->parameters->get_num_parents()
-				+ this->parameters->get_num_offspring());
-	}
-
 }
 
 /// @brief Initializes the commandline parameters that have been read in the main function. 
@@ -328,9 +324,16 @@ void Initializer<E, G, F>::init_comandline_parameters(int p_algorithm,
 		this->parameters->set_population_size(p_num_parents + p_num_offspring);
 	}
 
+	this->finalize_parameter_configuration();
+}
+
+template<class E, class G, class F>
+void Initializer<E, G, F>::finalize_parameter_configuration() {
+
 	this->parameters->set_genome_size();
 	this->parameters->set_eval_chunk_size();
-
+	this->parameters->set_population_size(this->parameters->get_num_parents()
+				+ this->parameters->get_num_offspring());
 }
 
 /// @brief Inits the number of ERC's according to the predefined type. 
