@@ -128,9 +128,10 @@ write_statfile                   -  0 = deactivated, 1 = activated
 
 #### Example 
 
-The following call to CGP++ triggers the synthesis of a Boolean expression for a simple 1-Bit digital adder by using a 1+1 ES as search algorithm:
+The following call to CGP++ triggers a run with a simple 1-Bit adder benchmark by using a 1+1 ES as search algorithm
+and a simple CGP with 10 function nodes and point mutation:
 
-```./cgp data/plufiles/add1c.plu data/parfiles/cgp.params -a 0 -b 100 -n 100 -v 1 -z 0 -o 1 -f 4 -r 2  -m 1 -l 1 -p 0.01 -c 0.0 -e 1000000 -j 10 -g 0  -s 42```
+```./cgp data/plufiles/add1c.plu data/parfiles/cgp.params -a 0 -b 10 -n 10 -v 1 -z 0 -o 1 -f 4 -r 2 -m 1 -l 1 -p 0.1 -c 0.0 -e 1000000 -j 10 -g 0```
 
 #### Template Settings 
 
