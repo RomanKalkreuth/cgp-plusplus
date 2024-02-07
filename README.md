@@ -134,10 +134,24 @@ and a simple CGP with 10 function nodes and point mutation:
 
 ```./cgp data/plufiles/add1c.plu data/parfiles/cgp.params -a 0 -b 10 -n 10 -v 1 -z 0 -o 1 -f 4 -r 2 -m 1 -l 1 -p 0.1 -c 0.0 -e 1000000 -j 10 -g 0```
 
+Template settings: 
+```
+typedef int  EVALUATION_TYPE;
+typedef int GENOME_TYPE;
+typedef int FITNESS_TYPE;
+```
+
 ##### Symbolic Regression
 This call triggers a run with the simple Koza1 benchmark (quartic polynomial) by using a 4+8 ES as search algorithm and discrete recombination:
 
 ```./cgp data/datfiles/koza1.dat data/parfiles/cgp.params  -a 1 -b 10 -n 10  -v 1 -z 0 -o 1 -f 4 -r 2 -m 4 -l 8 -p 0.1 -c 0.5 -e 10000000  -j 10  -g 0.01```
+
+Template settings: 
+```
+typedef float EVALUATION_TYPE;
+typedef int GENOME_TYPE;
+typedef float FITNESS_TYPE;
+```
 
 #### Template Settings 
 
