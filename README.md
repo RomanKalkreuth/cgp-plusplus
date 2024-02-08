@@ -33,9 +33,15 @@ We recommend compiling CGP++ using the G++ compiler with the following command:
 
 #### Build 
 
-A classical makefile is provided in the ```build``` folder. The command ```make all``` can be used to create the executable.
+For Linux, a classical Unix ```makefile``` is provided in the build folder. The command```make all``` can be used to create the executable.  
 
-A CMake file to create cross-compiled binaries is underway. 
+For building CGP++ on Windows, we recommend, using popular choices such as: 
+- Mingw-w64 (https://www.mingw-w64.org/)
+- MSVC (ttps://visualstudio.microsoft.com/vs/features/cplusplus/)
+- VSCode (https://code.visualstudio.com/docs/languages/cpp) \\ 
+
+For MacOS, the use of clang (https://clang.llvm.org/) can be considered in combination with VSCode as an alternative to using G++:
+https://code.visualstudio.com/docs/setup/mac
 
 ### Basic Usage
 
