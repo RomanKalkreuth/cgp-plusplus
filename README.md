@@ -38,7 +38,7 @@ For Linux, a classical Unix ```makefile``` is provided in the build folder. The 
 For building CGP++ on Windows, we recommend, using popular choices such as: 
 - Mingw-w64 (https://www.mingw-w64.org/)
 - MSVC (https://visualstudio.microsoft.com/vs/features/cplusplus/)
-- VSCode (https://code.visualstudio.com/docs/languages/cpp) \\ 
+- VSCode (https://code.visualstudio.com/docs/languages/cpp)
 
 On MacOS, the use of clang (https://clang.llvm.org/) in combination with VSCode can be considered as an alternative to using G++:
 https://code.visualstudio.com/docs/setup/mac
