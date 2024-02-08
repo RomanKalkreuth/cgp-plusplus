@@ -45,6 +45,7 @@ public:
 			std::shared_ptr<std::vector<E>> constants,
 			std::shared_ptr<Random> random, std::string &checkpoint_file_path);
 	void create_dir();
+	void init();
 	std::vector<std::string> split_genome(string genome_str);
 };
 
@@ -56,8 +57,13 @@ Checkpoint<E, G, F>::Checkpoint(std::shared_ptr<Parameters> p_parameters) {
 		throw std::invalid_argument(
 				"Nullpointer exception in checkpoint class!");
 	}
-	create_dir();
 }
+
+template<class E, class G, class F>
+void Checkpoint<E, G, F>::init() {
+		create_dir();
+}
+
 
 /// @brief Creates a directory for the checkpoint using the current timestamp.
 /// @details Concatenates the checkpoint file directory from the Parameters object with 

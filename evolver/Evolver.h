@@ -171,6 +171,11 @@ void Evolver<E, G, F>::run() {
 			this->algorithm->reset();
 		}
 
+		if (this->parameters->is_checkpointing()) {
+			this->composite->get_checkpoint()->init();
+		}
+
+
 		this->execute_job(job, ofs);
 
 		// Generate a new random seed if specified
