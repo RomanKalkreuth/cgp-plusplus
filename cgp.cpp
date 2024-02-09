@@ -110,6 +110,8 @@ int main(int argcc, char **argvv, char **envp) {
 
 	s = argvv[1];
 
+	// Validate the type of the passed datafile
+	// ---------------------------------------------------------------------------------------
 	if (s.find(".plu") != std::string::npos) {
 		problem_type = LOGIC_SYNTHESIS;
 	} else if (s.find(".dat") != std::string::npos) {
@@ -125,6 +127,9 @@ int main(int argcc, char **argvv, char **envp) {
 		}
 	}
 
+
+	// Get parameters from command line
+	// ---------------------------------------------------------------------------------------
 	char opt;
 	while ((opt = getopt(argcc, argvv,
 			"a:n:v:z:c:i:o:f:r:m:p:l:b:e:g:j:s:1:2:3:4")) != -1) {
@@ -220,7 +225,12 @@ int main(int argcc, char **argvv, char **envp) {
 		}
 
 	}
+	// ---------------------------------------------------------------------------------------
 
+
+	// Validate the evaluation type for the problem domain
+	// and create the initializer for the corresponding problems
+	// ---------------------------------------------------------------------------------------
 	std::shared_ptr<
 			BlackBoxInitializer<EVALUATION_TYPE, GENOME_TYPE, FITNESS_TYPE>> initializer;
 
@@ -244,6 +254,9 @@ int main(int argcc, char **argvv, char **envp) {
 		}
 	}
 
+
+	// Initialize the parameters
+	// ---------------------------------------------------------------------------------------
 	initializer->init_parfile_parameters(param_file);
 
 	initializer->init_comandline_parameters(algorithm, num_nodes, num_variables,
@@ -253,6 +266,11 @@ int main(int argcc, char **argvv, char **envp) {
 			max_duplication_depth, inversion_rate, max_inversion_depth,
 			crossover_rate, levels_back);
 
+
+	// ---------------------------------------------------------------------------------------
+
+	// Initialize the data and the elements used to run CGP
+	// ---------------------------------------------------------------------------------------
 	initializer->read_data();
 	initializer->init_functions();
 	initializer->init_composite();
@@ -261,9 +279,14 @@ int main(int argcc, char **argvv, char **envp) {
 	initializer->init_checkpoint();
 	initializer->init_algorithm();
 
+
+	// Check for a checkpoint file
+	// ---------------------------------------------------------------------------------------
 	if (checkpoint_file != "")
 		initializer->init_checkpoint_file(checkpoint_file);
 
+	// Create the evolver
+	// ---------------------------------------------------------------------------------------
 	std::shared_ptr<Evolver<EVALUATION_TYPE, GENOME_TYPE, FITNESS_TYPE>> evolver =
 			std::make_shared<Evolver<EVALUATION_TYPE, GENOME_TYPE, FITNESS_TYPE>>(
 					initializer);
