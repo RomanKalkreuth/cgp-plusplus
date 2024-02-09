@@ -26,6 +26,10 @@ Since CGP++ uses modern techniques of C++, it has to be compiled with a version 
 
 ### Getting Started
 
+#### User Guide
+
+The user guide provides supporting details for the usage of CGP++.
+
 #### Compilation 
 
 We recommend compiling CGP++ using the G++ compiler with the following command: 
